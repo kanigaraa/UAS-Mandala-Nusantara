@@ -1,0 +1,234 @@
+/* GLOBAL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* FADE ANIMATION */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.navbar .logo img {
+  height: 48px;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar nav ul li a {
+  color: #3d2817;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.btnLogin button {
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  width: 80px;
+  padding: 8px 16px;
+  border: none;
+  color: #fff;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+}
+
+.hero img {
+  margin-top: 80px;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.heroContent {
+  position: absolute;
+  top: 30%;
+  left: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heroContent h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.1;
+  color: #4b0000;
+}
+
+.heroContent p {
+  margin-top: 12px;
+  max-width: 650px;
+  color: #8b6f47;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.btnJelajah button {
+  font-weight: bold;
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  width: 148px;
+  height: 48px;
+  border: none;
+  color: #fff;
+  border-radius: 1000px;
+  cursor: pointer;
+}
+
+/* REKOMENDASI */
+.rekomendasi {
+  background-image: url("assets/rekomendasi_bg.png");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+  margin-top: -7px;
+}
+
+.rekomendasiContainer h1 {
+  text-align: center;
+  color: #4b0000;
+}
+
+.rekomendasiContainer p {
+  text-align: center;
+  color: #8b6f47;
+}
+
+.rekomendasiGrid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* CARD */
+.card-rekomendasi {
+  background: white;
+  border-radius: 16px;
+  outline: 4px rgba(212, 175, 55, 0.2) solid;
+  outline-offset: -4px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 290px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 192px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  background: rgba(124, 148, 115, 0.4);
+  color: #7c9473;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lokasi {
+  color: #8b6f47;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.lokasi-icon {
+  width: 10px;
+  height: 14px;
+  background: #8b6f47;
+  border-radius: 2px;
+}
+
+.card-title {
+  margin-top: 18px;
+  font-size: 24px;
+  color: #3d2817;
+  font-weight: 700;
+}
+
+.card-desc {
+  margin-top: 10px;
+  color: #8b6f47;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.btn-selengkapnya {
+  margin-top: 18px;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 16px;
+  background: white;
+  border-radius: 3px;
+}
