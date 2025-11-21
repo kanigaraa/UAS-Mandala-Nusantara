@@ -1,0 +1,653 @@
+/* GLOBAL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* FADE ANIMATION */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: var(--delay, 0s);
+}
+
+.fadeUp.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fadeLeft {
+  transform: translateX(-30px);
+}
+
+.fadeRight {
+  transform: translateX(30px);
+}
+
+.fadeLeft.show,
+.fadeRight.show {
+  transform: translateX(0);
+}
+
+/* POPUP */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popupBox {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  width: 420px;
+  text-align: center;
+  animation: pop 0.25s ease;
+}
+
+.popupBox h3 {
+  color: #4b0000;
+}
+
+.popupButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.popupButtons button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.loginBtn {
+  background: #c09f33;
+  color: white;
+}
+
+#closePopup {
+  background: #ccc;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.navbar .logo img {
+  height: 48px;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar nav ul li a {
+  color: #3d2817;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.btnLogin button {
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  width: 80px;
+  padding: 8px 16px;
+  border: none;
+  color: #fff;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+}
+
+.hero img {
+  margin-top: 80px;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.heroContent {
+  position: absolute;
+  top: 30%;
+  left: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heroContent h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.1;
+  color: #4b0000;
+}
+
+.heroContent p {
+  margin-top: 12px;
+  max-width: 650px;
+  color: #8b6f47;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.btnJelajah button {
+  font-weight: bold;
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  width: 148px;
+  height: 48px;
+  border: none;
+  color: #fff;
+  border-radius: 1000px;
+  cursor: pointer;
+}
+
+/* REKOMENDASI */
+.rekomendasi {
+  background-image: url("assets/rekomendasi_bg.png");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+  margin-top: -7px;
+}
+
+.rekomendasiContainer h1 {
+  text-align: center;
+  color: #4b0000;
+}
+
+.rekomendasiContainer p {
+  text-align: center;
+  color: #8b6f47;
+}
+
+.rekomendasiGrid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* CARD */
+.cardRekomendasi {
+  background: white;
+  border-radius: 16px;
+  outline: 4px rgba(212, 175, 55, 0.2) solid;
+  outline-offset: -4px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 290px;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 192px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  background: #dce6d5;
+  color: #6b8e23;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lokasi {
+  color: #8b6f47;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.lokasiIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.cardTitle {
+  margin-top: 18px;
+  font-size: 24px;
+  color: #3d2817;
+  font-weight: 700;
+}
+
+.cardDesc {
+  margin-top: 10px;
+  margin-bottom: 18px;
+  color: #8b6f47;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.btnSelengkapnya {
+  margin-top: auto;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnIcon {
+  width: 18px;
+  height: 16px;
+}
+
+/* JELAJAH */
+.jelajahSection {
+  padding: 100px 20px;
+  background: #fff;
+}
+
+.jelajahContainer {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.jelajahSectionTitle {
+  color: #4b0000;
+}
+
+.jelajahSubtitle {
+  color: #8b6f47;
+}
+
+.jelajahGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.jelajahCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(245, 230, 211, 1) 100%
+  );
+  border-radius: 20px;
+  padding: 24px;
+  width: 290px;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.jelajahTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jelajahIconWrap {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 1) 0%,
+    rgba(139, 111, 71, 1) 100%
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jelajahIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.jelajahBadge {
+  background: #e5e5e5;
+  color: #555;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+.kategori-hindu-buddha {
+  background: #dce6d5;
+  color: #6b8e23;
+}
+
+.kategori-islam {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.kategori-pra-kolonial {
+  background: rgba(201, 102, 94, 0.2);
+  color: rgba(201, 102, 94, 1);
+}
+
+.jelajahCardTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3d2817;
+  margin-top: 6px;
+}
+
+.jelajahLocationWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #8b6f47;
+  font-weight: 500;
+}
+
+.jelajahLocationWrap img {
+  width: 18px;
+  height: 18px;
+}
+
+.jelajahDesc {
+  font-size: 14px;
+  color: #8b6f47;
+  line-height: 22px;
+}
+
+.jelajahLink {
+  margin-top: auto;
+  font-size: 16px;
+  font-weight: 700;
+  color: #d4af37;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  background: #8b4513;
+  padding: 32px 0 16px;
+}
+
+.footerContainer {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.footerCol {
+  width: 260px;
+}
+
+.footerLogo {
+  width: 120px;
+  margin-top: 12px;
+}
+
+.footerDesc {
+  font-size: 13px;
+  color: #fff;
+  line-height: 20px;
+  margin-top: 16px;
+}
+
+.footerTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #d4af37;
+  margin-bottom: 12px;
+}
+
+.footerList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerList li {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.footerSocial {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.iconCircle {
+  width: 32px;
+  height: 32px;
+  background: #d4af37;
+  border-radius: 50%;
+}
+
+.iconCircle a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.socialIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.footerNote {
+  font-size: 13px;
+  color: #fff;
+  margin-top: 12px;
+  line-height: 18px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 20px auto;
+  width: 95%;
+}
+
+.footerBottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #fff;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar nav ul {
+    gap: 20px;
+  }
+
+  .heroContent {
+    top: 28%;
+    left: 5%;
+  }
+
+  .heroContent h1 {
+    font-size: 2.4rem;
+  }
+
+  .heroContent p {
+    max-width: 500px;
+    font-size: 1rem;
+  }
+
+  .footerContainer {
+    width: 95%;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footerCol {
+    width: 45%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* NAVBAR MOBILE */
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .navbar nav {
+    display: none;
+  }
+
+  .btnLogin button {
+    width: 70px;
+    padding: 6px 14px;
+  }
+
+  /* HERO */
+  .hero img {
+    height: 60vh;
+    margin-top: 60px;
+  }
+
+  .heroContent {
+    top: 22%;
+    left: 5%;
+    right: 5%;
+  }
+
+  .heroContent h1 {
+    font-size: 1.8rem;
+  }
+
+  .heroContent p {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  /* GRID REKOMENDASI & JELAJAH */
+  .rekomendasiGrid,
+  .jelajahGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 0 10px;
+  }
+
+  .cardRekomendasi,
+  .jelajahCard {
+    width: 100%;
+  }
+
+  /* FOOTER MOBILE */
+  .footerContainer {
+    width: 90%;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footerCol {
+    width: 100%;
+  }
+}
+
+/* Extra Small */
+@media (max-width: 480px) {
+  .heroContent h1 {
+    font-size: 1.55rem;
+  }
+
+  .btnJelajah button {
+    width: 130px;
+    height: 44px;
+  }
+
+  .cardRekomendasi,
+  .jelajahCard {
+    padding: 16px;
+  }
+
+  .footerCol {
+    width: 100%;
+  }
+}

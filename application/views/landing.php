@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mandala Nusantara</title>
 
-    <link rel="stylesheet" href="<?= base_url('landing.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/landing.css') ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,21 +16,22 @@
   </head>
 
   <body>
+    <!-- POPUP LOGIN -->
+    <?php if (!$isLoggedIn): ?>
+    <div id="popupLogin" class="popupOverlay">
+      <div class="popupBox">
+        <h3>Silakan Login Terlebih Dahulu</h3>
+        <p>Untuk mengakses detail kerajaan, kamu harus login.</p>
 
-  <!-- POPUP LOGIN -->
-  <div id="popupLogin" class="popupOverlay">
-    <div class="popupBox">
-      <h3>Silakan Login Terlebih Dahulu</h3>
-      <p>Untuk mengakses detail kerajaan, kamu harus login.</p>
-
-      <div class="popupButtons">
-        <button id="closePopup">Tutup</button>
-        <a href="<?= site_url('login') ?>">
-          <button class="loginBtn">Login</button>
-        </a>
+        <div class="popupButtons">
+          <button id="closePopup">Tutup</button>
+          <a href="<?= site_url('login') ?>">
+            <button class="loginBtn">Login</button>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+    <?php endif; ?>
 
     <!-- NAVBAR -->
     <header class="navbar">
@@ -117,7 +118,10 @@
                 <?= word_limiter($r['deskripsi'], 20) ?>
               </div>
 
-              <button class="btnSelengkapnya">
+              <button
+                class="btnSelengkapnya"
+                data-url="<?= site_url('kerajaan/detail/'.$r['id']) ?>"
+              >
                 <img
                   src="<?= base_url('assets/icon/book.svg') ?>"
                   class="btnIcon"
@@ -177,8 +181,8 @@
             </div>
 
             <a
-              href="<?= base_url('kerajaan/detail/'.$k['id']) ?>"
               class="jelajahLink"
+              data-url="<?= site_url('kerajaan/detail/'.$k['id']) ?>"
             >
               <span>Lihat Detail →</span>
             </a>
@@ -263,50 +267,51 @@
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const fadeItems = document.querySelectorAll(".fadeUp");
+            document.addEventListener("DOMContentLoaded", function () {
+              const fadeItems = document.querySelectorAll(".fadeUp");
 
-        fadeItems.forEach((item, index) => {
-          item.style.setProperty("--delay", `${index * 0.05}s`);
-        });
+              fadeItems.forEach((item, index) => {
+                item.style.setProperty("--delay", `${index * 0.05}s`);
+              });
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-              }
+              const observer = new IntersectionObserver(
+                (entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.classList.add("show");
+                    }
+                  });
+                },
+                { threshold: 0.2 }
+              );
+
+              fadeItems.forEach((item) => observer.observe(item));
             });
-          },
-          { threshold: 0.2 }
-        );
-
-        fadeItems.forEach((item) => observer.observe(item));
-      });
 
       document.addEventListener("DOMContentLoaded", function () {
-        const popup = document.getElementById("popupLogin");
-        const closePopup = document.getElementById("closePopup");
+          const isLoggedIn = <?= $isLoggedIn ? 'true' : 'false' ?>;
 
-        // Semua tombol "Baca Selengkapnya"
-        const btnSelengkapnya = document.querySelectorAll(".btnSelengkapnya");
+          const popup = document.getElementById("popupLogin");
+          const closePopup = document.getElementById("closePopup");
 
-        // Semua link "Lihat Detail"
-        const btnDetail = document.querySelectorAll(".jelajahLink");
+          const buttons = document.querySelectorAll(".btnSelengkapnya, .jelajahLink");
 
-        function openPopup(event) {
-          event.preventDefault();
-          popup.style.display = "flex";
-        }
+          buttons.forEach(btn => {
+              btn.addEventListener("click", function (e) {
+                  if (!isLoggedIn) {
+                      e.preventDefault();
+                      popup.style.display = "flex";
+                  } else {
+                      window.location.href = btn.dataset.url;
+                  }
+              });
+          });
 
-        btnSelengkapnya.forEach((btn) =>
-          btn.addEventListener("click", openPopup)
-        );
-        btnDetail.forEach((btn) => btn.addEventListener("click", openPopup));
-
-        closePopup.addEventListener("click", () => {
-          popup.style.display = "none";
-        });
+          if (closePopup) {
+              closePopup.addEventListener("click", () => {
+                  popup.style.display = "none";
+              });
+          }
       });
     </script>
   </body>
