@@ -54,6 +54,6 @@ $route['landing'] = 'landing';
 $route['login'] = 'login';
 $route['admin'] = 'admin';
 $route['kerajaan'] = 'rekomendasi/index';
-$route['admin'] = 'admin';
+$route['regist'] = 'regist';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

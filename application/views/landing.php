@@ -130,11 +130,11 @@
             <div class="jelajahTop">
               <div class="jelajahIconWrap">
                 <div class="jelajahIcon">
-                      <img 
-        src="<?= base_url('assets/icon/' . $k['icon']) ?>" 
-        class="jelajahIcon"
-        alt="icon kerajaan"
-    >
+                  <img
+                    src="<?= base_url('assets/icon/' . $k['icon']) ?>"
+                    class="jelajahIcon"
+                    alt="icon kerajaan"
+                  />
                 </div>
               </div>
 
@@ -211,28 +211,28 @@
           <div class="footerSocial">
             <div class="iconCircle">
               <a href="https://www.instagram.com/">
-              <img
-                src="<?= base_url('assets/icon/instagram.png') ?>"
-                class="socialIcon"
-              />
+                <img
+                  src="<?= base_url('assets/icon/instagram.png') ?>"
+                  class="socialIcon"
+                />
               </a>
             </div>
 
             <div class="iconCircle">
               <a href="https://www.youtube.com/">
-              <img
-                src="<?= base_url('assets/icon/youtube.png') ?>"
-                class="socialIcon"
-              />
+                <img
+                  src="<?= base_url('assets/icon/youtube.png') ?>"
+                  class="socialIcon"
+                />
               </a>
             </div>
 
             <div class="iconCircle">
               <a href="https://www.tiktok.com/">
-              <img
-                src="<?= base_url('assets/icon/tiktok.png') ?>"
-                class="socialIcon"
-              />
+                <img
+                  src="<?= base_url('assets/icon/tiktok.png') ?>"
+                  class="socialIcon"
+                />
               </a>
             </div>
           </div>
@@ -247,18 +247,26 @@
     </footer>
 
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("show");
-          });
-        },
-        { threshold: 0.2 }
-      );
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeItems = document.querySelectorAll(".fadeUp");
 
-      document
-        .querySelectorAll(".fadeUp")
-        .forEach((el) => observer.observe(el));
+        fadeItems.forEach((item, index) => {
+          item.style.setProperty("--delay", `${index * 0.05}s`);
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        fadeItems.forEach((item) => observer.observe(item));
+      });
     </script>
   </body>
 </html>
