@@ -20,11 +20,25 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: var(--delay, 0s);
 }
 
 .fadeUp.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.fadeLeft {
+  transform: translateX(-30px);
+}
+
+.fadeRight {
+  transform: translateX(30px);
+}
+
+.fadeLeft.show,
+.fadeRight.show {
+  transform: translateX(0);
 }
 
 /* NAVBAR */
