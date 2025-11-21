@@ -34,14 +34,7 @@ body {
   font-weight: 700;
   color: #4b0000;
   margin-top: 0;
-  margin-bottom: 6px;
-}
-
-.loginContainer p {
-  font-size: 14px;
-  color: #8b6f47;
-  margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .register a {
@@ -76,7 +69,7 @@ body {
 }
 
 .inputGroup input:focus {
-  border-color: #d4af37;
+  border-color: #c09f33;
 }
 
 button {
@@ -112,4 +105,15 @@ button:hover {
 
 .adminBtn:hover {
   background: #755d3a;
+}
+
+.errorBox {
+  width: 100%;
+  background: #ffdddd;
+  color: #a30000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
 }

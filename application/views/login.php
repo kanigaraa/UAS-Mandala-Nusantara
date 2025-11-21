@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
 
-    <link rel="stylesheet" href="<?= base_url('login.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/login.css') ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,25 +18,52 @@
     <div class="loginContainer">
         <img src="<?= base_url('assets/logo_mandala1.png') ?>">
         <h2>Selamat Datang!</h2>
+
         <div class="register">
             <p>Belum punya akun? <a href="<?= site_url('regist') ?>">Daftar</a></p>
         </div>
+
         <div class="inputContainer">
         <form action="<?= site_url('login/authenticate') ?>" method="post">
-            <div class="inputGroup">
+
+          <?php if ($this->session->flashdata('error')): ?>
+            <div class="errorBox"><?= $this->session->flashdata('error') ?></div>
+          <?php endif; ?>
+
+          <div class="inputGroup">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Masukkan alamat email" required />
-            </div>
-            <div class="inputGroup">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Masukkan alamat email"
+              required
+            />
+          </div>
+
+          <div class="inputGroup">
             <label for="password">Kata Sandi</label>
-            <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required />
-            </div>
-            </div>
-            <button type="submit">Login</button>
-            <button type="button" class="adminBtn" onclick="location.href='<?= site_url('admin') ?>'">
-              Login sebagai Admin
-            </button>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Masukkan kata sandi"
+              required
+            />
+          </div>
+
+          <button type="submit">Login</button>
+
+          <button
+            type="button"
+            class="adminBtn"
+            onclick="location.href='<?= site_url('admin') ?>'"
+          >
+            Login sebagai Admin
+          </button>
+
         </form>
+        </div>
     </div>
   </body>
 </html>

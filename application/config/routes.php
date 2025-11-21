@@ -51,7 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'loading';
 $route['landing'] = 'landing';
-$route['login'] = 'login';
+$route['landing_logged'] = 'logged';
+$route['login'] = 'login/index';
+$route['login/authenticate'] = 'login/authenticate';
 $route['admin'] = 'admin';
 $route['kerajaan'] = 'rekomendasi/index';
 $route['regist'] = 'regist';
