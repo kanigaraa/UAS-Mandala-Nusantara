@@ -33,81 +33,219 @@
       </nav>
 
       <div class="btnLogin">
-        <button onclick="location.href='login.php'">Login</button>
+        <button onclick="location.href='<?= site_url('login') ?>'">
+          Login
+        </button>
       </div>
     </header>
 
     <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <img src="<?= base_url('assets/hero_image.png') ?>" alt="Hero Image" />
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <img src="<?= base_url('assets/hero_image.png') ?>" alt="Hero Image" />
 
-      <div class="heroContent fade-up">
-        <h1>Menelusuri Warisan Para Raja:</h1>
-        <h1 style="color: #c09f33">Temukan Kisah Agung</h1>
-        <h1>Kerajaan Nusantara</h1>
+        <div class="heroContent fadeUp">
+          <h1>Menelusuri Warisan Para Raja:</h1>
+          <h1 style="color: #c09f33">Temukan Kisah Agung</h1>
+          <h1>Kerajaan Nusantara</h1>
 
-        <p>
-          Jelajahi kisah kerajaan-kerajaan megah yang membentuk Indonesia. Dari
-          kekuatan maritim Sriwijaya hingga kejayaan Majapahit, temukan warisan
-          budaya dan struktur kekuasaan yang menginspirasi.
-        </p>
+          <p>
+            Jelajahi kisah kerajaan-kerajaan megah yang membentuk Indonesia.
+            Dari kekuatan maritim Sriwijaya hingga kejayaan Majapahit, temukan
+            warisan budaya dan struktur kekuasaan yang menginspirasi.
+          </p>
 
-        <div class="btnJelajah">
-          <button>Mulai Menjelajah</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- REKOMENDASI -->
-    <section class="rekomendasi" id="rekomendasi">
-      <div class="rekomendasiContainer fade-up">
-        <h1>Kisah yang Wajib Diketahui</h1>
-        <p>
-          Jelajahi kerajaan-kerajaan paling berpengaruh dalam sejarah Nusantara
-        </p>
-      </div>
-
-      <div class="rekomendasiGrid">
-        <?php foreach ($kerajaan as $k): ?>
-        <div class="card-rekomendasi fade-up">
-          <!-- GAMBAR -->
-          <div class="card-image">
-            <img
-              src="<?= base_url('assets/kerajaan/' . $k['gambar']) ?>"
-              alt="<?= $k['nama'] ?>"
-            />
-          </div>
-
-          <!-- ISI CARD -->
-          <div class="card-content">
-            <div class="card-header">
-              <span class="tag"><?= $k['kategori'] ?></span>
-              <span class="lokasi">
-                <span class="lokasi-icon"></span>
-                <?= $k['lokasi'] ?>
-              </span>
-            </div>
-
-            <!-- Judul -->
-            <div class="card-title"><?= $k['nama'] ?></div>
-
-            <!-- Deskripsi -->
-            <div class="card-desc">
-              <?= word_limiter($k['deskripsi'], 20) ?>
-            </div>
-
-            <!-- Tombol -->
-            <button class="btn-selengkapnya">
-              Baca Selengkapnya
-              <span class="btn-icon"></span>
-            </button>
+          <div class="btnJelajah">
+            <a href="#jelajah">
+              <button>Mulai Menjelajah</button>
+            </a>
           </div>
         </div>
-        <?php endforeach; ?>
-      </div>
-    </section>
+      </section>
+
+      <!-- REKOMENDASI -->
+      <section class="rekomendasi" id="rekomendasi">
+        <div class="rekomendasiContainer fadeUp">
+          <h1>Kisah yang Wajib Diketahui</h1>
+          <p>
+            Jelajahi kerajaan-kerajaan paling berpengaruh dalam sejarah
+            Nusantara
+          </p>
+        </div>
+
+        <div class="rekomendasiGrid">
+          <?php foreach ($rekomendasi as $r): ?>
+          <div class="cardRekomendasi fadeUp">
+            <div class="cardImage">
+              <img
+                src="<?= base_url('assets/kerajaan/' . $r['gambar']) ?>"
+                alt="<?= $r['nama'] ?>"
+              />
+            </div>
+
+            <div class="cardContent">
+              <div class="cardHeader">
+                <span class="tag"><?= $r['kategori'] ?></span>
+                <span class="lokasi">
+                  <img
+                    src="<?= base_url('assets/icon/location.svg') ?>"
+                    class="lokasiIcon"
+                  />
+                  <?= $r['lokasi'] ?>
+                </span>
+              </div>
+
+              <div class="cardTitle"><?= $r['nama'] ?></div>
+
+              <div class="cardDesc">
+                <?= word_limiter($r['deskripsi'], 20) ?>
+              </div>
+
+              <button class="btnSelengkapnya">
+                <img
+                  src="<?= base_url('assets/icon/book.svg') ?>"
+                  class="btnIcon"
+                />
+                Baca Selengkapnya
+              </button>
+            </div>
+          </div>
+          <?php endforeach; ?>
+        </div>
+      </section>
+
+      <!-- SECTION JELAJAH -->
+      <section class="jelajahSection" id="jelajah">
+        <div class="jelajahContainer fadeUp">
+          <h1 class="jelajahSectionTitle">Jelajahi Kerajaan Nusantara</h1>
+          <p class="jelajahSubtitle">
+            Temukan kisah kerajaan yang paling berpengaruh dalam sejarah
+            Indonesia
+          </p>
+        </div>
+
+        <div class="jelajahGrid fadeUp">
+          <?php foreach ($kerajaan as $k): ?>
+          <div class="jelajahCard">
+            <div class="jelajahTop">
+              <div class="jelajahIconWrap">
+                <div class="jelajahIcon">
+                      <img 
+        src="<?= base_url('assets/icon/' . $k['icon']) ?>" 
+        class="jelajahIcon"
+        alt="icon kerajaan"
+    >
+                </div>
+              </div>
+
+              <div
+                class="jelajahBadge kategori-<?= strtolower(str_replace(' ', '-', $k['kategori'])) ?>"
+              >
+                <?= $k['kategori']; ?>
+              </div>
+            </div>
+
+            <div class="jelajahCardTitle">
+              <?= $k['nama']; ?>
+            </div>
+
+            <div class="jelajahLocationWrap">
+              <img src="<?= base_url('assets/icon/location.svg') ?>" />
+              <div class="jelajahLocationText">
+                <?= $k['lokasi']; ?>
+              </div>
+            </div>
+
+            <div class="jelajahDesc">
+              <?= $k['deskripsi']; ?>
+            </div>
+
+            <a
+              href="<?= base_url('kerajaan/detail/'.$k['id']) ?>"
+              class="jelajahLink"
+            >
+              <span>Lihat Detail →</span>
+            </a>
+          </div>
+          <?php endforeach; ?>
+        </div>
+      </section>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="about">
+      <div class="footerContainer">
+        <div class="footerCol">
+          <img
+            src="<?= base_url('assets/logo_footer.png') ?>"
+            class="footerLogo"
+          />
+
+          <p class="footerDesc">
+            Platform edukasi sejarah kerajaan Indonesia yang menyenangkan dan
+            informatif untuk semua kalangan.
+          </p>
+        </div>
+
+        <div class="footerCol">
+          <h3 class="footerTitle">Jelajahi</h3>
+          <ul class="footerList">
+            <li>Semua Kerajaan</li>
+            <li>Timeline Era</li>
+            <li>Tokoh Bersejarah</li>
+          </ul>
+        </div>
+
+        <div class="footerCol">
+          <h3 class="footerTitle">Informasi</h3>
+          <ul class="footerList">
+            <li>Tentang Kami</li>
+            <li>Referensi & Sumber</li>
+            <li>Kontak</li>
+          </ul>
+        </div>
+
+        <div class="footerCol">
+          <h3 class="footerTitle">Ikuti Kami</h3>
+
+          <div class="footerSocial">
+            <div class="iconCircle">
+              <a href="https://www.instagram.com/">
+              <img
+                src="<?= base_url('assets/icon/instagram.png') ?>"
+                class="socialIcon"
+              />
+              </a>
+            </div>
+
+            <div class="iconCircle">
+              <a href="https://www.youtube.com/">
+              <img
+                src="<?= base_url('assets/icon/youtube.png') ?>"
+                class="socialIcon"
+              />
+              </a>
+            </div>
+
+            <div class="iconCircle">
+              <a href="https://www.tiktok.com/">
+              <img
+                src="<?= base_url('assets/icon/tiktok.png') ?>"
+                class="socialIcon"
+              />
+              </a>
+            </div>
+          </div>
+
+          <p class="footerNote">
+            Dapatkan update konten sejarah terbaru dan menarik.
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="footerBottom">© 2025 Mandala. Semua Hak Dilindungi.</div>
+    </footer>
+
     <script>
       const observer = new IntersectionObserver(
         (entries) => {
@@ -119,7 +257,7 @@
       );
 
       document
-        .querySelectorAll(".fade-up")
+        .querySelectorAll(".fadeUp")
         .forEach((el) => observer.observe(el));
     </script>
   </body>
