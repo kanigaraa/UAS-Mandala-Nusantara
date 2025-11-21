@@ -64,13 +64,13 @@ body {
 }
 
 .inputGroup input:focus {
-  border-color: #d4af37;
+  border-color: #c09f33;
 }
 
 button {
   width: 100%;
   padding: 11px;
-  background: #d4af37;
+  background: #c09f33;
   border: none;
   border-radius: 10px;
   font-size: 15px;
