@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #fff8dc 0%, #beb383 100%);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* ========= TOMBOL KEMBALI ========= */
+
+.btn-back {
+  display: inline-block;
+  background: linear-gradient(90deg, #edd8a9, #8b6f47);
+  color: white;
+  padding: 10px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-back:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ========= JUDUL ========= */
+
+.title {
+  font-size: 36px;
+  color: #4b0000;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #6b4f2c;
+}
+
+/* ========= GAMBAR HERO ========= */
+
+.hero-image img {
+  display: block;
+  margin: 0 auto 30px;
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ========= DESKRIPSI ========= */
+
+.description {
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 50px;
+  color: #4b3a2a;
+}
+
+/* ========= BOX STYLE ========= */
+
+.box {
+  background: linear-gradient(135deg, #fff, #f5e6d3);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ========= TIMELINE ========= */
+
+.timeline h2 {
+  text-align: center;
+  color: #8b6f47;
+  margin-bottom: 20px;
+}
+
+.timeline-list {
+  list-style-type: disc;
+  padding-left: 30px;
+}
+
+.timeline-list li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6b4f2c;
+  margin-bottom: 10px;
+}
+
+.timeline-list li::marker {
+  color: #8b6f47;
+  font-size: 18px;
+}
+
+/* ========= WARISAN ========= */
+
+.warisan h2 {
+  text-align: center;
+  color: #8b6f47;
+  margin-bottom: 20px;
+}
+
+.warisan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
+}
+
+.warisan-grid img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: rgba(246, 224, 196, 0.75);
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+}
+
+.warisan-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* ========= PERISTIWA ========= */
+
+.peristiwa {
+  margin-top: 60px;
+}
+
+.peristiwa h2 {
+  font-size: 32px;
+  color: #4b0000;
+  text-align: center;
+}
+
+.peristiwa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.peristiwa-grid .left,
+.peristiwa-grid .right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.peristiwa-grid img {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.peristiwa-grid p {
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+  color: #4b3a2a;
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media screen and (max-width: 992px) {
+  .warisan-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .warisan-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .peristiwa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .warisan-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .warisan-grid img {
+    width: 60px;
+    height: 60px;
+  }
+}

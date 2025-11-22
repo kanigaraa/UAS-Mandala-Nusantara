@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mandala Nusantara</title>
 
-    <link rel="stylesheet" href="<?= base_url('styles/logged.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/landing_admin.css') ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +16,6 @@
   </head>
 
   <body>
-
     <!-- NAVBAR -->
     <header class="navbar">
       <div class="logo">
@@ -25,7 +24,7 @@
         </a>
       </div>
 
-      <nav>
+      <nav class="navMenu">
         <ul>
           <li><a href="#home">Beranda</a></li>
           <li><a href="#jelajah">Jelajah Kerajaan</a></li>
@@ -33,10 +32,18 @@
         </ul>
       </nav>
 
-      <div class="btnLogout">
-        <button onclick="location.href='<?= site_url('landing') ?>'">
-          Logout
-        </button>
+      <div class="navRight">
+        <div class="btnDashboard">
+          <button onclick="location.href='<?= site_url('dashboard') ?>'">
+            Dashboard
+          </button>
+        </div>
+
+        <div class="btnLogout">
+          <button onclick="location.href='<?= site_url('landing') ?>'">
+            Logout
+          </button>
+        </div>
       </div>
     </header>
 
@@ -102,16 +109,16 @@
                 <?= word_limiter($r['deskripsi'], 20) ?>
               </div>
 
-<button
-  class="btnSelengkapnya"
-  onclick="location.href='<?= site_url('kerajaan/detail_rekomendasi/'.$r['id']) ?>'"
->
-  <img
-    src="<?= base_url('assets/icon/book.svg') ?>"
-    class="btnIcon"
-  />
-  Baca Selengkapnya
-</button>
+              <button
+                class="btnSelengkapnya"
+                data-url="<?= site_url('kerajaan/detail/'.$r['id']) ?>"
+              >
+                <img
+                  src="<?= base_url('assets/icon/book.svg') ?>"
+                  class="btnIcon"
+                />
+                Baca Selengkapnya
+              </button>
             </div>
           </div>
           <?php endforeach; ?>
@@ -167,7 +174,8 @@
             <a
               class="jelajahLink"
               href="<?= site_url('kerajaan/detail/'.$k['id']) ?>"
-            >Lihat Detail →</a>
+              >Lihat Detail →</a
+            >
           </div>
           <?php endforeach; ?>
         </div>
@@ -249,27 +257,28 @@
     </footer>
 
     <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const fadeItems = document.querySelectorAll(".fadeUp");
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeItems = document.querySelectorAll(".fadeUp");
 
-              fadeItems.forEach((item, index) => {
-                item.style.setProperty("--delay", `${index * 0.05}s`);
-              });
+        fadeItems.forEach((item, index) => {
+          item.style.setProperty("--delay", `${index * 0.05}s`);
+        });
 
-              const observer = new IntersectionObserver(
-                (entries) => {
-                  entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                      entry.target.classList.add("show");
-                    }
-                  });
-                },
-                { threshold: 0.2 }
-              );
-
-              fadeItems.forEach((item) => observer.observe(item));
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
             });
+          },
+          { threshold: 0.2 }
+        );
 
+        fadeItems.forEach((item) => observer.observe(item));
+      });
+
+      
     </script>
   </body>
 </html>

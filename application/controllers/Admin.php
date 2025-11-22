@@ -25,7 +25,7 @@ class Admin extends CI_Controller {
                 'logged_in'  => true
             ]);
 
-            redirect('dashboard');  
+            redirect('landing_admin');  
         } else {
             $this->session->set_flashdata('error', 'Email atau password salah.');
             redirect('admin');
