@@ -13,9 +13,12 @@
       rel="stylesheet"
     />
     <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>" />
   </head>
 
   <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
     <!-- NAVBAR -->
     <header class="navbar">
       <div class="logo">
@@ -270,5 +273,6 @@
         fadeItems.forEach((item) => observer.observe(item));
       });
     </script>
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
   </body>
 </html>

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Daftar Kerajaan</title>
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>" />
 </head>
 <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
     <h1>Daftar Kerajaan</h1>
 
     <?php if (!empty($kingdoms)) : ?>
@@ -23,5 +26,6 @@
         <p>Data kerajaan tidak ditemukan.</p>
     <?php endif; ?>
 
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
 </body>
 </html>
