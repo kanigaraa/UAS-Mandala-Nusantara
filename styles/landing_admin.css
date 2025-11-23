@@ -155,7 +155,7 @@ body {
 
 /* REKOMENDASI */
 .rekomendasi {
-  background-image: url("/Mandala/assets/rekomendasi_bg1.png");
+  background-image: url("../assets/rekomendasi_bg1.png");
   background-size: cover;
   background-position: center;
   padding: 80px 20px;
