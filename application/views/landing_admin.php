@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mandala Nusantara</title>
 
-    <link rel="stylesheet" href="<?= base_url('styles/logged.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/landing_admin.css') ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,7 +24,7 @@
         </a>
       </div>
 
-      <nav>
+      <nav class="navMenu">
         <ul>
           <li><a href="#home">Beranda</a></li>
           <li><a href="#jelajah">Jelajah Kerajaan</a></li>
@@ -32,10 +32,18 @@
         </ul>
       </nav>
 
-      <div class="btnLogout">
-        <button onclick="location.href='<?= site_url('landing') ?>'">
-          Logout
-        </button>
+      <div class="navRight">
+        <div class="btnDashboard">
+          <button onclick="location.href='<?= site_url('dashboard') ?>'">
+            Dashboard
+          </button>
+        </div>
+
+        <div class="btnLogout">
+          <button onclick="location.href='<?= site_url('landing') ?>'">
+            Logout
+          </button>
+        </div>
       </div>
     </header>
 
@@ -165,7 +173,7 @@
 
             <a
               class="jelajahLink"
-              href="<?= site_url('kerajaan/detail/'.(isset($k['kingdom_id']) && $k['kingdom_id'] ? $k['kingdom_id'] : $k['id'])) ?>"
+              href="<?= site_url('kerajaan/detail/'.$k['id']) ?>"
               >Lihat Detail →</a
             >
           </div>

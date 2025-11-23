@@ -1,0 +1,522 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-image: url("../assets/rekomendasi_bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 220, 0.85),
+    rgba(190, 179, 131, 0.85)
+  );
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px 60px;
+}
+
+.btn-back {
+  display: inline-block;
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(139, 111, 71, 0.2);
+}
+
+.btn-back:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(139, 111, 71, 0.3);
+}
+
+/* ========== HERO SECTION ========== */
+
+.hero-section {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.hero-content {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #4b0000;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #6b4f2c;
+  font-weight: 400;
+  line-height: 1.5;
+  text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.6);
+}
+
+.hero-image {
+  position: relative;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.hero-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ========== MAIN CONTENT ========== */
+
+.main-content {
+  margin-top: 50px;
+}
+
+.description-box {
+  background: linear-gradient(135deg, #fff, #f5e6d3);
+  border-radius: 20px;
+  padding: 35px 40px;
+  margin-bottom: 50px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.9;
+  text-align: justify;
+  color: #4b3a2a;
+  margin: 0;
+}
+
+.box {
+  background: linear-gradient(135deg, #fff, #f5e6d3);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.box:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ========== TIMELINE ========== */
+
+.timeline h2 {
+  text-align: center;
+  color: #8b6f47;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.timeline-list {
+  list-style-type: none;
+  padding-left: 0;
+  position: relative;
+}
+
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: linear-gradient(180deg, #edd8a9, #8b6f47);
+  border-radius: 2px;
+}
+
+.timeline-list li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6b4f2c;
+  margin-bottom: 20px;
+  padding-left: 50px;
+  position: relative;
+}
+
+.timeline-list li::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 8px;
+  width: 15px;
+  height: 15px;
+  background: #edd8a9;
+  border: 3px solid #8b6f47;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-list li b {
+  color: #8b6f47;
+  font-weight: 700;
+}
+
+/* ========== WARISAN BUDAYA ========== */
+
+.warisan h2 {
+  text-align: center;
+  color: #8b6f47;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.warisan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+  align-items: start;
+  padding: 10px 0;
+}
+
+.warisan-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.warisan-item:hover {
+  transform: scale(1.05);
+}
+
+.warisan-grid img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  background: rgba(246, 224, 196, 0.8);
+  padding: 18px;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.warisan-item:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  background: rgba(246, 224, 196, 1);
+}
+
+.warisan-item h3 {
+  font-size: 16px;
+  color: #6b4f2c;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ========== PERISTIWA ========== */
+
+.peristiwa {
+  margin-top: 50px;
+}
+
+.peristiwa > h2 {
+  font-size: 32px;
+  color: #4b0000;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.peristiwa-item {
+  margin-bottom: 35px;
+}
+
+.peristiwa-title {
+  font-size: 26px;
+  color: #8b6f47;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.peristiwa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.peristiwa-grid .left,
+.peristiwa-grid .right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.peristiwa-grid img {
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.peristiwa-grid img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.peristiwa-grid p {
+  font-size: 16px;
+  line-height: 1.9;
+  text-align: justify;
+  color: #4b3a2a;
+  width: 100%;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media screen and (max-width: 992px) {
+  .container {
+    padding: 25px 15px 50px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .warisan-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .peristiwa-grid {
+    gap: 35px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px 15px 40px;
+  }
+
+  .btn-back {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .hero-section {
+    margin-top: 35px;
+    margin-bottom: 40px;
+  }
+
+  .hero-content {
+    margin-bottom: 25px;
+  }
+
+  .hero-image {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .description-box {
+    padding: 30px 25px;
+    margin-bottom: 40px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .box {
+    padding: 30px 25px;
+    margin-bottom: 30px;
+  }
+
+  .timeline h2,
+  .warisan h2 {
+    font-size: 24px;
+  }
+
+  .peristiwa > h2 {
+    font-size: 28px;
+  }
+
+  .warisan-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .peristiwa-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .peristiwa-title {
+    font-size: 22px;
+  }
+
+  .peristiwa-grid img {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px 12px 30px;
+  }
+
+  .btn-back {
+    padding: 8px 20px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .hero-section {
+    margin-top: 25px;
+    margin-bottom: 30px;
+  }
+
+  .hero-content {
+    margin-bottom: 20px;
+  }
+
+  .hero-image {
+    border-radius: 12px;
+  }
+
+  .description-box {
+    padding: 25px 20px;
+    margin-bottom: 30px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .box {
+    padding: 25px 20px;
+    margin-bottom: 25px;
+  }
+
+  .timeline h2,
+  .warisan h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .peristiwa > h2 {
+    font-size: 24px;
+  }
+
+  .timeline-list li {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .warisan-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .warisan-grid img {
+    width: 80px;
+    height: 80px;
+    padding: 12px;
+  }
+
+  .warisan-item h3 {
+    font-size: 14px;
+  }
+
+  .peristiwa-item {
+    margin-bottom: 25px;
+  }
+
+  .peristiwa-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .peristiwa-grid {
+    gap: 20px;
+  }
+
+  .peristiwa-grid .left,
+  .peristiwa-grid .right {
+    gap: 15px;
+  }
+
+  .peristiwa-grid p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}

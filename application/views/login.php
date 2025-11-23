@@ -1,3 +1,15 @@
+<?php if ($this->session->flashdata('success')): ?>
+<script>
+  alert("<?= $this->session->flashdata('success'); ?>");
+</script>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error')): ?>
+<script>
+  alert("<?= $this->session->flashdata('error'); ?>");
+</script>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
