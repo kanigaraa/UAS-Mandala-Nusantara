@@ -21,8 +21,11 @@
       rel="stylesheet"
     />
     <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>" />
   </head>
   <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
     <div class="registContainer">
         <img src="<?= base_url('assets/logo_mandala1.png') ?>">
         <h2>Buat Akun Baru</h2>
@@ -48,5 +51,6 @@
             <button type="submit">Daftar</button>
         </form>
     </div>
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
   </body>
 </html>

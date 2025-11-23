@@ -4,51 +4,37 @@
     <meta charset="UTF-8">
     <title><?= $title; ?></title>
     <link rel="stylesheet" href="<?= base_url('styles/admin.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
-    <style>
-        /* CSS Dashboard */
-        .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 20px; font-family: 'Poppins', sans-serif; }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #d4af37; padding-bottom: 20px; margin-bottom: 30px; }
-        
-        /* Tombol Logout & Tambah */
-        .btn-logout { background: #a83232; color: white; padding: 8px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn-tambah { background: #d4af37; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
-        
-        /* Styling Tabel */
-        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; }
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background-color: #3d2817; color: white; }
-        tr:hover { background-color: #f9f9f9; }
-        
-        /* Gambar Kecil di Tabel */
-        .thumb-img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; }
-
-        /* Tombol Aksi */
-        .btn-action { padding: 5px 10px; border-radius: 4px; text-decoration: none; color: white; font-size: 14px; margin-right: 5px; }
-        .edit { background-color: #2980b9; }
-        .delete { background-color: #c0392b; }
-    </style>
 </head>
 <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
 
     <div class="dashboard-container">
         <div class="header">
             <div>
-                <h1 style="margin:0;">Dashboard Admin</h1>
-                <p style="margin:5px 0 0; color:#666;">Selamat Datang di Panel Mandala</p>
+                <h1>Dashboard Admin</h1>
+                <p>Selamat Datang di Panel Mandala Nusantara</p>
             </div>
             <a href="<?= site_url('dashboard/logout'); ?>" class="btn-logout">Logout</a>
         </div>
 
-        <a href="<?= site_url('admin/tambah_kerajaan'); ?>" class="btn-tambah">+ Tambah Kerajaan Baru</a>
-        <a href="<?= base_url('index.php/landing_admin'); ?>" target="_blank" class="btn-tambah" style="background:#27ae60;">Lihat Website</a>
+        <div style="margin-bottom: 20px;">
+            <a href="<?= site_url('admin/tambah_kerajaan'); ?>" class="btn-tambah">+ Tambah Kerajaan Baru</a>
+            <a href="<?= base_url('index.php/landing_admin'); ?>" target="_blank" class="btn-tambah btn-lihat">Lihat Website</a>
+        </div>
 
         <?php if($this->session->flashdata('success')): ?>
-            <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-                <?= $this->session->flashdata('success'); ?>
+            <div class="alert-success">
+                ✓ <?= $this->session->flashdata('success'); ?>
             </div>
         <?php endif; ?>
 
+        <?php if(!empty($kerajaan)): ?>
         <table>
             <thead>
                 <tr>
@@ -66,32 +52,40 @@
                     <td><?= $no++; ?></td>
                     <td>
                         <?php if(!empty($k['icon'])): ?>
-                            <img src="<?= base_url('assets/kerajaan/' . $k['icon']); ?>" class="thumb-img">
+                            <img src="<?= base_url('assets/kerajaan/' . $k['icon']); ?>" class="thumb-img" alt="<?= $k['nama']; ?>">
                         <?php else: ?>
-                            <span>-</span>
+                            <span style="color: #ccc;">-</span>
                         <?php endif; ?>
                     </td>
-                    <td><?= $k['nama']; ?></td>
+                    <td><strong><?= $k['nama']; ?></strong></td>
                     <td><?= $k['lokasi']; ?></td>
-                    <td><?= $k['kategori'] ?? '-'; ?></td> <td>
+                    <td>
+                        <span style="background: #f0f0f0; padding: 4px 10px; border-radius: 6px; font-size: 12px; color: #666;">
+                            <?= $k['kategori'] ?? '-'; ?>
+                        </span>
+                    </td>
+                    <td>
                         <a href="<?= site_url('admin/edit_kerajaan/' . $k['id']); ?>" class="btn-action edit">Edit</a>
-                        
                         <a href="<?= site_url('admin/hapus_kerajaan/' . $k['id']); ?>" 
-                           onclick="return confirm('Yakin ingin menghapus <?= $k['nama']; ?>?');" 
+                           onclick="return confirm('⚠️ Yakin ingin menghapus <?= $k['nama']; ?>?\n\nData yang dihapus tidak dapat dikembalikan!');" 
                            class="btn-action delete">
-                           Hapus
+                            Hapus
                         </a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-        <?php if(empty($kerajaan)): ?>
-            <p style="text-align:center; padding: 20px; background:white;">Belum ada data kerajaan.</p>
+        <?php else: ?>
+            <div class="empty-state">
+                <p style="font-size: 48px; margin-bottom: 10px;">📭</p>
+                <p>Belum ada data kerajaan.</p>
+                <p style="font-size: 14px; margin-top: 10px;">Klik tombol "Tambah Kerajaan Baru" untuk memulai.</p>
+            </div>
         <?php endif; ?>
 
     </div>
 
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
 </body>
 </html>

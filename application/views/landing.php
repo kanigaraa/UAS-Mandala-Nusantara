@@ -13,9 +13,13 @@
       rel="stylesheet"
     />
     <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>" />
   </head>
 
   <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
+
     <!-- POPUP LOGIN -->
     <?php if (!$isLoggedIn): ?>
     <div id="popupLogin" class="popupOverlay">
@@ -302,6 +306,7 @@
                       e.preventDefault();
                       popup.style.display = "flex";
                   } else {
+                      if (window.showLoader) window.showLoader();
                       window.location.href = btn.dataset.url;
                   }
               });
@@ -314,5 +319,6 @@
           }
       });
     </script>
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
   </body>
 </html>

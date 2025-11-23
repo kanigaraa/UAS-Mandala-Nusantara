@@ -12,9 +12,12 @@
       rel="stylesheet"
     />
     <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>" />
   </head>
 
   <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
     <div class="container">
       <a href="<?= site_url('landing_logged') ?>" class="btn-back">
         ← Kembali ke Beranda
@@ -67,5 +70,6 @@
       </div>
       </section>
     </div>
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
   </body>
 </html>
