@@ -1,0 +1,95 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url("assets/rekomendasi_bg.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.loginContainer {
+  width: 380px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(245, 230, 211, 1) 100%
+  );
+  padding: 32px;
+  border-radius: 18px;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.loginContainer img {
+  width: 140px;
+  margin-bottom: 16px;
+}
+
+.loginContainer h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4b0000;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.inputContainer {
+  margin-bottom: 24px;
+}
+
+.inputGroup {
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.inputGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3d2817;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(140, 100, 50, 0.3);
+  font-size: 13px;
+  outline: none;
+}
+
+.inputGroup input:focus {
+  border-color: #d4af37;
+}
+
+button {
+  width: 100%;
+  padding: 11px;
+  background: #d4af37;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+button:hover {
+  background: #c19d31;
+}
+
+.errorBox {
+  width: 100%;
+  background: #ffdddd;
+  color: #a30000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
