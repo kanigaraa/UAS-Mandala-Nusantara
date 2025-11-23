@@ -5,7 +5,7 @@
     <title><?= $kingdom->nama ?></title>
     <link
       rel="stylesheet"
-      href="<?= base_url('styles/detail_rekomendasi.css') ?>"
+      href="<?= base_url('styles/detail.css') ?>"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
@@ -64,30 +64,6 @@
           </div>
           <?php endforeach; ?>
         </div>
-      </div>
-
-      <!-- PERISTIWA -->
-      <div class="peristiwa">
-        <h2>Peristiwa Penting</h2>
-
-        <?php foreach($event as $e): ?>
-        <div class="peristiwa-item box">
-          <h3 class="peristiwa-title"><?= $e->judul ?></h3>
-          <div class="peristiwa-grid">
-            <div class="left">
-              <img src="<?= base_url('assets/peristiwa/'.$e->gambar_kiri) ?>" />
-              <p><?= $e->isi_kiri ?></p>
-            </div>
-
-            <div class="right">
-              <img
-                src="<?= base_url('assets/peristiwa/'.$e->gambar_kanan) ?>"
-              />
-              <p><?= $e->isi_kanan ?></p>
-            </div>
-          </div>
-        </div>
-        <?php endforeach; ?>
       </div>
       </section>
     </div>

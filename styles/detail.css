@@ -255,71 +255,6 @@ body::before {
   font-weight: 600;
 }
 
-/* ========== PERISTIWA ========== */
-
-.peristiwa {
-  margin-top: 50px;
-}
-
-.peristiwa > h2 {
-  font-size: 32px;
-  color: #4b0000;
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.peristiwa-item {
-  margin-bottom: 35px;
-}
-
-.peristiwa-title {
-  font-size: 26px;
-  color: #8b6f47;
-  text-align: center;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.peristiwa-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: start;
-}
-
-.peristiwa-grid .left,
-.peristiwa-grid .right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.peristiwa-grid img {
-  width: 100%;
-  max-width: 350px;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  transition: all 0.3s ease;
-}
-
-.peristiwa-grid img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-}
-
-.peristiwa-grid p {
-  font-size: 16px;
-  line-height: 1.9;
-  text-align: justify;
-  color: #4b3a2a;
-  width: 100%;
-}
-
 /* ========== RESPONSIVE ========== */
 
 @media screen and (max-width: 992px) {
@@ -338,10 +273,6 @@ body::before {
   .warisan-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-  }
-
-  .peristiwa-grid {
-    gap: 35px;
   }
 }
 
@@ -396,26 +327,9 @@ body::before {
     font-size: 24px;
   }
 
-  .peristiwa > h2 {
-    font-size: 28px;
-  }
-
   .warisan-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-  }
-
-  .peristiwa-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .peristiwa-title {
-    font-size: 22px;
-  }
-
-  .peristiwa-grid img {
-    max-width: 100%;
   }
 }
 
@@ -473,10 +387,6 @@ body::before {
     margin-bottom: 25px;
   }
 
-  .peristiwa > h2 {
-    font-size: 24px;
-  }
-
   .timeline-list li {
     font-size: 15px;
     margin-bottom: 16px;
@@ -495,28 +405,5 @@ body::before {
 
   .warisan-item h3 {
     font-size: 14px;
-  }
-
-  .peristiwa-item {
-    margin-bottom: 25px;
-  }
-
-  .peristiwa-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .peristiwa-grid {
-    gap: 20px;
-  }
-
-  .peristiwa-grid .left,
-  .peristiwa-grid .right {
-    gap: 15px;
-  }
-
-  .peristiwa-grid p {
-    font-size: 15px;
-    line-height: 1.8;
   }
 }

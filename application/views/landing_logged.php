@@ -16,7 +16,6 @@
   </head>
 
   <body>
-
     <!-- NAVBAR -->
     <header class="navbar">
       <div class="logo">
@@ -102,16 +101,16 @@
                 <?= word_limiter($r['deskripsi'], 20) ?>
               </div>
 
-<button
-  class="btnSelengkapnya"
-  onclick="location.href='<?= site_url('kerajaan/detail_rekomendasi/'.$r['id']) ?>'"
->
-  <img
-    src="<?= base_url('assets/icon/book.svg') ?>"
-    class="btnIcon"
-  />
-  Baca Selengkapnya
-</button>
+              <button
+                class="btnSelengkapnya"
+                onclick="location.href='<?= site_url('kerajaan/detail_rekomendasi/' . (isset($r['id_kerajaan']) ? $r['id_kerajaan'] : '')) ?>'"
+              >
+                <img
+                  src="<?= base_url('assets/icon/book.svg') ?>"
+                  class="btnIcon"
+                />
+                Baca Selengkapnya
+              </button>
             </div>
           </div>
           <?php endforeach; ?>
@@ -166,8 +165,9 @@
 
             <a
               class="jelajahLink"
-              href="<?= site_url('kerajaan/detail/'.$k['id']) ?>"
-            >Lihat Detail →</a>
+              href="<?= site_url('kerajaan/detail/'.(isset($k['kingdom_id']) && $k['kingdom_id'] ? $k['kingdom_id'] : $k['id'])) ?>"
+              >Lihat Detail →</a
+            >
           </div>
           <?php endforeach; ?>
         </div>
@@ -249,27 +249,26 @@
     </footer>
 
     <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const fadeItems = document.querySelectorAll(".fadeUp");
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeItems = document.querySelectorAll(".fadeUp");
 
-              fadeItems.forEach((item, index) => {
-                item.style.setProperty("--delay", `${index * 0.05}s`);
-              });
+        fadeItems.forEach((item, index) => {
+          item.style.setProperty("--delay", `${index * 0.05}s`);
+        });
 
-              const observer = new IntersectionObserver(
-                (entries) => {
-                  entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                      entry.target.classList.add("show");
-                    }
-                  });
-                },
-                { threshold: 0.2 }
-              );
-
-              fadeItems.forEach((item) => observer.observe(item));
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
             });
+          },
+          { threshold: 0.2 }
+        );
 
+        fadeItems.forEach((item) => observer.observe(item));
+      });
     </script>
   </body>
 </html>

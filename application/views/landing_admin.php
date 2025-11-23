@@ -111,7 +111,7 @@
 
               <button
                 class="btnSelengkapnya"
-                data-url="<?= site_url('kerajaan/detail/'.$r['id']) ?>"
+                onclick="location.href='<?= site_url('kerajaan/detail_rekomendasi/' . (isset($r['id_kerajaan']) ? $r['id_kerajaan'] : '')) ?>'"
               >
                 <img
                   src="<?= base_url('assets/icon/book.svg') ?>"
@@ -277,8 +277,6 @@
 
         fadeItems.forEach((item) => observer.observe(item));
       });
-
-      
     </script>
   </body>
 </html>
