@@ -133,7 +133,7 @@ body {
 
 /* REKOMENDASI */
 .rekomendasi {
-  background-image: url("assets/rekomendasi_bg.png");
+  background-image: url("../assets/rekomendasi_bg1.png") !important;
   background-size: cover;
   background-position: center;
   padding: 80px 20px;

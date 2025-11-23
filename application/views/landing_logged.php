@@ -64,7 +64,7 @@
       </section>
 
       <!-- REKOMENDASI -->
-      <section class="rekomendasi" id="rekomendasi">
+      <section class="rekomendasi" id="rekomendasi" style="background-image: url('<?= base_url('assets/rekomendasi_bg1.png') ?>');">
         <div class="rekomendasiContainer fadeUp">
           <h1>Kisah yang Wajib Diketahui</h1>
           <p>
