@@ -51,7 +51,7 @@
                 <textarea name="deskripsi" rows="5" required placeholder="Tuliskan sejarah singkat kerajaan ini..."></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">💾 Simpan Data</button>
+            <button type="submit" class="btn-submit">Simpan Data</button>
             <a href="<?= site_url('dashboard'); ?>" class="btn-back">← Kembali ke Dashboard</a>
 
         <?= form_close(); ?>

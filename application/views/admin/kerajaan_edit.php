@@ -57,7 +57,7 @@
                 <textarea name="deskripsi" rows="5" required><?= $kerajaan['deskripsi']; ?></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">💾 Update Data</button>
+            <button type="submit" class="btn-submit">Update Data</button>
             <a href="<?= site_url('dashboard'); ?>" class="btn-back">← Batal</a>
 
         <?= form_close(); ?>

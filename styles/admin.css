@@ -1,4 +1,4 @@
-/* ===== GLOBAL STYLES ===== */
+/* ===== GLOBAL ===== */
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +16,7 @@ body {
   padding: 20px;
 }
 
-/* ===== LOGIN PAGE ===== */
+/* ===== LOGIN ===== */
 .loginContainer {
   width: 100%;
   max-width: 420px;
@@ -102,7 +102,7 @@ button,
 .btn-submit {
   width: 100%;
   padding: 13px;
-  background: linear-gradient(135deg, #c09f33 0%, #d4af37 100%);
+  background: #d4af37;
   border: none;
   border-radius: 12px;
   font-size: 16px;
@@ -110,15 +110,6 @@ button,
   color: white;
   cursor: pointer;
   margin-top: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(192, 159, 51, 0.3);
-}
-
-button:hover,
-.btn-submit:hover {
-  background: linear-gradient(135deg, #d4af37 0%, #c09f33 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(192, 159, 51, 0.4);
 }
 
 .errorBox {
@@ -165,28 +156,19 @@ button:hover,
   font-size: 14px;
 }
 
-/* Buttons */
 .btn-logout {
-  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  background: #e74c3c;
   color: white;
   padding: 10px 24px;
   text-decoration: none;
   border-radius: 10px;
   font-weight: 600;
   font-size: 14px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
   display: inline-block;
 }
 
-.btn-logout:hover {
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(192, 57, 43, 0.4);
-}
-
 .btn-tambah {
-  background: linear-gradient(135deg, #c09f33 0%, #d4af37 100%);
+  background: #d4af37;
   color: white;
   padding: 12px 28px;
   text-decoration: none;
@@ -196,24 +178,10 @@ button:hover,
   display: inline-block;
   margin-bottom: 20px;
   margin-right: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(192, 159, 51, 0.3);
-}
-
-.btn-tambah:hover {
-  background: linear-gradient(135deg, #d4af37 0%, #c09f33 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(192, 159, 51, 0.4);
 }
 
 .btn-lihat {
-  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
-}
-
-.btn-lihat:hover {
-  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-  box-shadow: 0 6px 16px rgba(39, 174, 96, 0.4);
+  background: #2ecc71;
 }
 
 .btn-back {
@@ -221,16 +189,11 @@ button:hover,
   color: #666;
   margin-left: 20px;
   font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.btn-back:hover {
-  color: #3d2817;
 }
 
 /* Alert Messages */
 .alert-success {
-  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  background: #d4edda;
   color: #155724;
   padding: 16px 20px;
   border-radius: 12px;
@@ -240,7 +203,7 @@ button:hover,
 }
 
 .alert-error {
-  background: linear-gradient(135deg, #ffdddd 0%, #ffcccc 100%);
+  background: #ffdddd;
   color: #a83232;
   padding: 16px 20px;
   border-radius: 12px;
@@ -249,7 +212,6 @@ button:hover,
   box-shadow: 0 4px 12px rgba(168, 50, 50, 0.1);
 }
 
-/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -267,16 +229,12 @@ td {
 }
 
 th {
-  background: linear-gradient(135deg, #3d2817 0%, #4b3520 100%);
+  background: #3d2817;
   color: white;
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-tr:hover {
-  background-color: #fafafa;
 }
 
 tr:last-child td {
@@ -291,7 +249,6 @@ tr:last-child td {
   border: 2px solid #f0f0f0;
 }
 
-/* Action Buttons */
 .btn-action {
   padding: 8px 16px;
   border-radius: 8px;
@@ -301,32 +258,16 @@ tr:last-child td {
   font-weight: 600;
   margin-right: 6px;
   display: inline-block;
-  transition: all 0.3s ease;
 }
 
 .edit {
-  background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
-  box-shadow: 0 3px 10px rgba(41, 128, 185, 0.3);
-}
-
-.edit:hover {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(41, 128, 185, 0.4);
+  background: #3498db;
 }
 
 .delete {
-  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
-  box-shadow: 0 3px 10px rgba(192, 57, 43, 0.3);
+  background: #e74c3c;
 }
 
-.delete:hover {
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(192, 57, 43, 0.4);
-}
-
-/* Form Container */
 .form-container {
   max-width: 900px;
   margin: 40px auto;
@@ -364,15 +305,8 @@ tr:last-child td {
   border-radius: 12px;
   border: 3px solid #f0f0f0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
-.img-preview:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 60px 20px;
