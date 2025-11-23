@@ -18,6 +18,24 @@ class Regist extends CI_Controller {
         $password = $this->input->post('password');
         $password_confirm = $this->input->post('password_confirm');
 
+        // Validasi panjang kata sandi
+        if (strlen($password) < 8) {
+            $this->session->set_flashdata('error', 'Kata sandi harus minimal 8 karakter.');
+            redirect('regist');
+        }
+
+        // Validasi huruf kapital
+        if (!preg_match('/[A-Z]/', $password)) {
+            $this->session->set_flashdata('error', 'Kata sandi harus mengandung minimal 1 huruf kapital.');
+            redirect('regist');
+        }
+
+        // Validasi angka
+        if (!preg_match('/[0-9]/', $password)) {
+            $this->session->set_flashdata('error', 'Kata sandi harus mengandung minimal 1 angka.');
+            redirect('regist');
+        }
+
         if ($password !== $password_confirm) {
             $this->session->set_flashdata('error', 'Password tidak cocok.');
             redirect('regist');
