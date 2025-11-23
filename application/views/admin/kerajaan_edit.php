@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit Kerajaan</title>
     <link rel="stylesheet" href="<?= base_url('styles/admin.css') ?>">
+    <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
     <style>
         /* Style sederhana (bisa pakai yang lama) */
         body { font-family: 'Poppins', sans-serif; background: #f4f4f4; }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tambah Kerajaan</title>
     <link rel="stylesheet" href="<?= base_url('styles/admin.css') ?>">
+    <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f4f4f4; }
         .form-container {

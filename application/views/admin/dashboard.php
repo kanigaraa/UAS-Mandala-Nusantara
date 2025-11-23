@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?= $title; ?></title>
     <link rel="stylesheet" href="<?= base_url('styles/admin.css') ?>">
+    <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>" />
     <style>
         /* CSS Dashboard */
         .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 20px; font-family: 'Poppins', sans-serif; }
@@ -40,7 +41,7 @@
         </div>
 
         <a href="<?= site_url('admin/tambah_kerajaan'); ?>" class="btn-tambah">+ Tambah Kerajaan Baru</a>
-        <a href="<?= base_url(); ?>" target="_blank" class="btn-tambah" style="background:#27ae60;">Lihat Website</a>
+        <a href="<?= base_url('index.php/landing_admin'); ?>" target="_blank" class="btn-tambah" style="background:#27ae60;">Lihat Website</a>
 
         <?php if($this->session->flashdata('success')): ?>
             <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
