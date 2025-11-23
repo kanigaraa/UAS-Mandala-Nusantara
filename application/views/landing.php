@@ -182,7 +182,7 @@
 
             <a
               class="jelajahLink"
-              data-url="<?= site_url('kerajaan/detail/'.$k['id']) ?>"
+              href="<?= site_url('kerajaan/detail/'.$k['id']) ?>"
             >
               <span>Lihat Detail →</span>
             </a>
