@@ -1,6 +1,6 @@
 body {
   font-family: "Poppins", sans-serif;
-  background-image: url("../assets/rekomendasi_bg1.png");
+  background-image: url("assets/rekomendasi_bg.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-.registContainer {
+.loginContainer {
   width: 380px;
   background: linear-gradient(
     135deg,
@@ -24,29 +24,17 @@ body {
   text-align: center;
 }
 
-.registContainer img {
+.loginContainer img {
   width: 140px;
   margin-bottom: 16px;
 }
 
-.registContainer h2 {
+.loginContainer h2 {
   font-size: 28px;
   font-weight: 700;
   color: #4b0000;
   margin-top: 0;
-  margin-bottom: 6px;
-}
-
-.registContainer p {
-  font-size: 14px;
-  color: #8b6f47;
-  margin-top: 0;
-  margin-bottom: 32px;
-}
-
-.login a {
-  color: #d4af37;
-  font-weight: 700;
+  margin-bottom: 24px;
 }
 
 .inputContainer {
@@ -82,7 +70,7 @@ body {
 button {
   width: 100%;
   padding: 11px;
-  background: #c09f33;
+  background: #d4af37;
   border: none;
   border-radius: 10px;
   font-size: 15px;
@@ -94,4 +82,14 @@ button {
 
 button:hover {
   background: #c19d31;
+}
+
+.errorBox {
+  width: 100%;
+  background: #ffdddd;
+  color: #a30000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: center;
 }

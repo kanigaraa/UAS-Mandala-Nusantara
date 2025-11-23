@@ -1,6 +1,6 @@
 body {
   font-family: "Poppins", sans-serif;
-  background-image: url("../assets/rekomendasi_bg1.png");
+  background-image: url("assets/rekomendasi_bg.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-.registContainer {
+.loginContainer {
   width: 380px;
   background: linear-gradient(
     135deg,
@@ -24,12 +24,12 @@ body {
   text-align: center;
 }
 
-.registContainer img {
+.loginContainer img {
   width: 140px;
   margin-bottom: 16px;
 }
 
-.registContainer h2 {
+.loginContainer h2 {
   font-size: 28px;
   font-weight: 700;
   color: #4b0000;
@@ -37,14 +37,14 @@ body {
   margin-bottom: 6px;
 }
 
-.registContainer p {
+.loginContainer p {
   font-size: 14px;
   color: #8b6f47;
   margin-top: 0;
   margin-bottom: 32px;
 }
 
-.login a {
+.register a {
   color: #d4af37;
   font-weight: 700;
 }
@@ -82,7 +82,7 @@ body {
 button {
   width: 100%;
   padding: 11px;
-  background: #c09f33;
+  background: #d4af37;
   border: none;
   border-radius: 10px;
   font-size: 15px;
@@ -94,4 +94,22 @@ button {
 
 button:hover {
   background: #c19d31;
+}
+
+.adminBtn {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  padding: 11px;
+  border-radius: 10px;
+  background: #8b6f47;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.adminBtn:hover {
+  background: #755d3a;
 }

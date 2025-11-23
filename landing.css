@@ -42,67 +42,6 @@ body {
   transform: translateX(0);
 }
 
-/* POPUP */
-.popupOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.popupBox {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  width: 420px;
-  text-align: center;
-  animation: pop 0.25s ease;
-}
-
-.popupBox h3 {
-  color: #4b0000;
-}
-
-.popupButtons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.popupButtons button {
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.loginBtn {
-  background: #c09f33;
-  color: white;
-}
-
-#closePopup {
-  background: #ccc;
-}
-
-@keyframes pop {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 /* NAVBAR */
 .navbar {
   position: fixed;
@@ -194,7 +133,7 @@ body {
 
 /* REKOMENDASI */
 .rekomendasi {
-  background-image: url("../assets/rekomendasi_bg1.png") !important;
+  background-image: url("assets/rekomendasi_bg.png");
   background-size: cover;
   background-position: center;
   padding: 80px 20px;
@@ -369,8 +308,8 @@ body {
 }
 
 .jelajahIcon {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   object-fit: contain;
 }
 
@@ -537,6 +476,7 @@ hr {
 
 /* Tablet */
 @media (max-width: 992px) {
+
   .navbar {
     padding: 10px 20px;
   }
@@ -572,6 +512,7 @@ hr {
 
 /* Mobile */
 @media (max-width: 768px) {
+
   /* NAVBAR MOBILE */
   .navbar {
     padding: 10px 16px;
@@ -651,3 +592,4 @@ hr {
     width: 100%;
   }
 }
+
