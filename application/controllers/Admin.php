@@ -23,7 +23,8 @@ class Admin extends CI_Controller {
         if ($admin) {
             $this->session->set_userdata([
                 'id'   => $admin->id,
-                'logged_in'  => true
+                'logged_in'  => true,
+                'admin_logged_in' => true  // Add this to identify admin
             ]);
 
             redirect('landing_admin');  
