@@ -102,7 +102,7 @@ button,
 .btn-submit {
   width: 100%;
   padding: 13px;
-  background: #d4af37;
+  background: linear-gradient(135deg, #c09f33 0%, #d4af37 100%);
   border: none;
   border-radius: 12px;
   font-size: 16px;
@@ -110,6 +110,10 @@ button,
   color: white;
   cursor: pointer;
   margin-top: 8px;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #d4af37 0%, #c09f33 100%);
 }
 
 .errorBox {
@@ -120,7 +124,8 @@ button,
   margin-bottom: 20px;
   border-radius: 10px;
   text-align: center;
-  border: 1px solid #ffaaaa;
+  font-size: 14px;
+  border: 1px solid #ffcccc;
 }
 
 /* ===== DASHBOARD ===== */
