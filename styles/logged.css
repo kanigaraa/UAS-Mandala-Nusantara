@@ -72,6 +72,11 @@ body {
   color: #3d2817;
   text-decoration: none;
   font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+  color: #c09f33;
 }
 
 .btnLogout button {

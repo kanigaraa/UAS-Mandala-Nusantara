@@ -47,9 +47,9 @@
 
       <nav>
         <ul>
-          <li><a href="#home">Beranda</a></li>
+          <li><a href="#home" class="active">Beranda</a></li>
           <li><a href="#jelajah">Jelajah Kerajaan</a></li>
-          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="<?= site_url('about') ?>">Tentang Kami</a></li>
         </ul>
       </nav>
 
