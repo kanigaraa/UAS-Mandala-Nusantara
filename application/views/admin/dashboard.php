@@ -64,7 +64,11 @@
                             <a href="<?= site_url('admin/edit_rekomendasi/' . $r['id_kerajaan']) ?>" class="btn btn-primary btn-sm btn-action">Edit</a>
                             <a href="<?= site_url('admin/hapus_rekomendasi/' . $r['id_kerajaan']) ?>" 
                                class="btn btn-danger btn-sm btn-action" 
-                               onclick="return confirm('Yakin ingin menghapus rekomendasi <?= $r['nama'] ?>?')">Hapus</a>
+                               onclick="return confirm('Yakin ingin menghapus rekomendasi <?= $r['nama'] ?>?')">Hapus
+                            </a>
+                            <a href="<?= site_url('admin/kelola_detail/' . $r['id_kerajaan']) ?>" class="btn btn-info btn-sm btn-action" style="margin-right: 5px;">
+                                Detail
+                            </a>
                         </td>
                     </tr>
                     <?php endforeach; 
@@ -123,7 +127,11 @@
                             <a href="<?= site_url('admin/edit_kerajaan/' . $k['id']) ?>" class="btn btn-primary btn-sm btn-action">Edit</a>
                             <a href="<?= site_url('admin/hapus_kerajaan/' . $k['id']) ?>" 
                                class="btn btn-danger btn-sm btn-action" 
-                               onclick="return confirm('Yakin ingin menghapus kerajaan <?= $k['nama'] ?>?')">Hapus</a>
+                               onclick="return confirm('Yakin ingin menghapus kerajaan <?= $k['nama'] ?>?')">Hapus
+                            </a>
+                            <a href="<?= site_url('admin/kelola_detail/' . $k['kingdom_id']) ?>" class="btn btn-info btn-sm btn-action" style="margin-right: 5px;">
+                                Kelola Detail
+                            </a>
                         </td>
                     </tr>
                     <?php endforeach; 
