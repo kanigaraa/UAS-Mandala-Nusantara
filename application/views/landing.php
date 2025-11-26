@@ -223,7 +223,7 @@
         <div class="footerCol">
           <h3 class="footerTitle">Informasi</h3>
           <ul class="footerList">
-            <li>Tentang Kami</li>
+            <li><a href="<?= site_url('about') ?>">Tentang Kami</a></li>
             <li>Referensi & Sumber</li>
             <li>Kontak</li>
           </ul>
