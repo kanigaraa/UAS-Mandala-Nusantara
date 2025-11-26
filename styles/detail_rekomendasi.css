@@ -209,11 +209,10 @@ body::before {
 }
 
 .warisan-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 40px;
-  justify-items: center;
-  align-items: start;
   padding: 10px 0;
 }
 
@@ -222,7 +221,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  width: 100%;
+  width: 220px;
   transition: transform 0.3s ease;
 }
 
@@ -335,11 +334,6 @@ body::before {
     font-size: 18px;
   }
 
-  .warisan-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-
   .peristiwa-grid {
     gap: 35px;
   }
@@ -398,11 +392,6 @@ body::before {
 
   .peristiwa > h2 {
     font-size: 28px;
-  }
-
-  .warisan-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
   }
 
   .peristiwa-grid {
@@ -480,11 +469,6 @@ body::before {
   .timeline-list li {
     font-size: 15px;
     margin-bottom: 16px;
-  }
-
-  .warisan-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
 
   .warisan-grid img {
