@@ -8,17 +8,17 @@ class Dashboard extends CI_Controller {
         if (!$this->session->userdata('logged_in')) {
             redirect('admin');
         }
-        // Load Model Kerajaan
+        
         $this->load->model('Kerajaan_model');
+        $this->load->model('Rekomendasi_model');
     }
 
     public function index() {
         $data['title'] = 'Dashboard Admin - Mandala';
         
-        // AMBIL DATA KERAJAAN DARI DATABASE
         $data['kerajaan'] = $this->Kerajaan_model->getAll(); 
+        $data['rekomendasi'] = $this->Rekomendasi_model->getAll();
 
-        // Kirim data $kerajaan ke view
         $this->load->view('admin/dashboard', $data);
     }
     

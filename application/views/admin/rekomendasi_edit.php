@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Tambah Kerajaan</title>
+    <title>Edit Rekomendasi Kerajaan</title>
     <link rel="stylesheet" href="<?= base_url('styles/admin.css') ?>">
     <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,25 +14,19 @@
     <!-- LOADER -->
     <div id="page-loader"><div class="spinner"></div></div>
 
-    <div class="form-container">
-        <h2>Tambah Data Kerajaan</h2>
-
         <?php if($this->session->flashdata('error')): ?>
             <div class="alert-error">
                 ⚠️ <?= $this->session->flashdata('error'); ?>
             </div>
         <?php endif; ?>
 
-        <?= form_open_multipart('admin/simpan_kerajaan'); ?>
+        <?= form_open_multipart('admin/update_rekomendasi'); ?>
+        
+            <input type="hidden" name="id" value="<?= $rekomendasi['id_kerajaan']; ?>">
         
             <div class="form-group">
                 <label>Nama Kerajaan</label>
                 <input type="text" name="nama" required placeholder="Contoh: Kerajaan Majapahit">
-            </div>
-
-            <div class="form-group">
-                <label>Lokasi (Provinsi)</label>
-                <input type="text" name="lokasi" required placeholder="Contoh: Jawa Timur">
             </div>
 
             <div class="form-group">
@@ -41,9 +35,18 @@
             </div>
 
             <div class="form-group">
-                <label>Upload Icon/Gambar</label>
-                <input type="file" name="icon" required accept=".png, .jpg, .jpeg">
-                <small>*Format: JPG/PNG. Maksimal 5MB.</small>
+                <label>Lokasi (Provinsi)</label>
+                <input type="text" name="lokasi" required placeholder="Contoh: Jawa Timur">
+            </div>
+
+            <div class="form-group">
+                <label>Gambar</label>
+                <input type="file" name="gambar" accept=".png, .jpg, .jpeg">
+                <small>Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                
+                <?php if(!empty($rekomendasi['gambar'])): ?>
+                    <img src="<?= base_url('assets/rekomendasi/'.$rekomendasi['gambar']) ?>" class="img-preview" alt="Preview">
+                <?php endif; ?>
             </div>
 
             <div class="form-group">
@@ -51,8 +54,8 @@
                 <textarea name="deskripsi" rows="5" required placeholder="Tuliskan sejarah singkat kerajaan ini..."></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">Simpan Data</button>
-            <a href="<?= site_url('dashboard'); ?>" class="btn-back">← Kembali ke Dashboard</a>
+            <button type="submit" class="btn-submit">Update Data</button>
+            <a href="<?= site_url('dashboard'); ?>" class="btn-back">← Batal</a>
 
         <?= form_close(); ?>
     </div>

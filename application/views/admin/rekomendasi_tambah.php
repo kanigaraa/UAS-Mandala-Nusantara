@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Tambah Kerajaan</title>
+    <title>Tambah Rekomendasi Kerajaan</title>
     <link rel="stylesheet" href="<?= base_url('styles/admin.css') ?>">
     <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <div id="page-loader"><div class="spinner"></div></div>
 
     <div class="form-container">
-        <h2>Tambah Data Kerajaan</h2>
+        <h2>Tambah Data Rekomendasi Kerajaan</h2>
 
         <?php if($this->session->flashdata('error')): ?>
             <div class="alert-error">
@@ -23,16 +23,11 @@
             </div>
         <?php endif; ?>
 
-        <?= form_open_multipart('admin/simpan_kerajaan'); ?>
+        <?= form_open_multipart('admin/simpan_rekomendasi'); ?>
         
             <div class="form-group">
                 <label>Nama Kerajaan</label>
                 <input type="text" name="nama" required placeholder="Contoh: Kerajaan Majapahit">
-            </div>
-
-            <div class="form-group">
-                <label>Lokasi (Provinsi)</label>
-                <input type="text" name="lokasi" required placeholder="Contoh: Jawa Timur">
             </div>
 
             <div class="form-group">
@@ -41,8 +36,13 @@
             </div>
 
             <div class="form-group">
-                <label>Upload Icon/Gambar</label>
-                <input type="file" name="icon" required accept=".png, .jpg, .jpeg">
+                <label>Lokasi (Provinsi)</label>
+                <input type="text" name="lokasi" required placeholder="Contoh: Jawa Timur">
+            </div>
+
+            <div class="form-group">
+                <label>Upload Gambar</label>
+                <input type="file" name="gambar" required accept=".png, .jpg, .jpeg">
                 <small>*Format: JPG/PNG. Maksimal 5MB.</small>
             </div>
 

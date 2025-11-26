@@ -81,7 +81,7 @@
           <div class="cardRekomendasi fadeUp">
             <div class="cardImage">
               <img
-                src="<?= base_url('assets/kerajaan/' . $r['gambar']) ?>"
+                src="<?= base_url('assets/rekomendasi/' . $r['gambar']) ?>"
                 alt="<?= $r['nama'] ?>"
               />
             </div>
@@ -137,7 +137,7 @@
               <div class="jelajahIconWrap">
                 <div class="jelajahIcon">
                   <img
-                    src="<?= base_url('assets/icon/' . $k['icon']) ?>"
+                    src="<?= base_url('assets/kerajaan/' . $k['icon']) ?>"
                     class="jelajahIcon"
                     alt="icon kerajaan"
                   />
