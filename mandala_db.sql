@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Nov 2025 pada 02.33
+-- Waktu pembuatan: 26 Nov 2025 pada 15.31
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 7.4.30
 
@@ -88,9 +88,10 @@ CREATE TABLE `kingdoms` (
 --
 
 INSERT INTO `kingdoms` (`id`, `nama`, `subjudul`, `gambar`, `deskripsi`) VALUES
-(1, 'Sriwijaya', 'Kerajaan pelaut terbesar yang menguasai jalur perdagangan Asia Tenggara.', 'sriwijaya_detail.png', 'Sriwijaya berkembang sebagai pusat pembelajaran Buddha yang terkenal, menarik pelajar dari berbagai wilayah Asia, termasuk Tiongkok dan India. Wilayahnya yang strategis menjadikan Sriwijaya sebagai pengendali jalur perdagangan internasional, terutama dalam komoditas seperti kapur barus, emas, dan rempah-rempah. Keberhasilan Sriwijaya juga ditopang oleh kekuatan armada laut yang menjaga keamanan perairan Nusantara.'),
+(1, 'Sriwijaya: Kerajaan Maritim Buddha di Sumatra', 'Kerajaan pelaut terbesar yang menguasai jalur perdagangan Asia Tenggara.', 'sriwijaya_detail.png', 'Sriwijaya berkembang sebagai pusat pembelajaran Buddha yang terkenal, menarik pelajar dari berbagai wilayah Asia, termasuk Tiongkok dan India. Wilayahnya yang strategis menjadikan Sriwijaya sebagai pengendali jalur perdagangan internasional, terutama dalam komoditas seperti kapur barus, emas, dan rempah-rempah. Keberhasilan Sriwijaya juga ditopang oleh kekuatan armada laut yang menjaga keamanan perairan Nusantara.'),
 (2, 'Majapahit: Kerajaan Hindu-Buddha di Jawa Timur', 'Menjelajahi kerajaan besar yang berpengaruh dalam sejarah Nusantara.', 'majapahit_detail.png', 'Kerajaan Majapahit dikenal sebagai kerajaan yang memiliki sistem pemerintahan teratur dan struktur birokrasi yang kuat. Kehidupan masyarakatnya berkembang dalam bidang pertanian, perdagangan, seni, dan sastra, sementara hubungan antarwilayah diperkuat melalui jaringan pelabuhan besar yang menghubungkan Nusantara dengan Asia Tenggara. Majapahit juga menghasilkan berbagai karya sastra penting yang menggambarkan kehidupan istana, upacara keagamaan, dan politik kerajaan.'),
 (3, 'Kutai: Kerajaan Hindu Pertama di Nusantara', 'Kerajaan awal Indonesia yang meninggalkan prasasti tertua dalam sejarah.', 'kutai_detail.jpg', 'Kerajaan Kutai merupakan kerajaan tertua di Indonesia yang dikenal melalui keberadaan prasasti Yupa yang memuat informasi tentang kehidupan politik dan sosial masyarakatnya. Kutai berkembang melalui aktivitas perdagangan di sekitar Sungai Mahakam, serta mengadopsi pengaruh budaya India seperti penggunaan aksara Pallawa dan penyebaran ajaran Hindu pada masa awal.'),
+(4, 'Mataram Kuno: Kerajaan Hindu-Buddha di Jawa Tengah', 'Peradaban kuno yang melahirkan mahakarya candi-candi agung Nusantara.', 'mataram_detail.png', 'Kerajaan Mataram Islam dikenal sebagai pusat kebudayaan Jawa yang menghasilkan karya seni arsitektur, sastra, dan tradisi keraton yang masih bertahan hingga kini. Sistem pemerintahan kerajaan ini menekankan harmoni antara kekuasaan raja, adat Jawa, dan nilai-nilai Islam. Mataram juga berperan dalam menyatukan daerah pedalaman Jawa melalui kekuatan militer dan diplomasi.'),
 (5, 'Tarumanagara', 'Kerajaan Hindu tertua di Jawa Barat dengan sistem irigasi maju', 'tarumanagara_detail.png', 'Tarumanagara adalah kerajaan Hindu tertua yang tercatat di Jawa Barat, berdiri sekitar abad ke-4 Masehi. Kerajaan ini terkenal dengan prasasti-prasasti Raja Purnawarman yang menunjukkan kemajuan dalam sistem irigasi dan pembangunan infrastruktur. Wilayah kekuasaan Tarumanagara meliputi sebagian besar Jawa Barat modern, dengan pusat kerajaan di daerah Bekasi dan Bogor. Sistem pemerintahan yang terorganisir dan kemampuan teknologi hidrolik menjadikan Tarumanagara sebagai kerajaan yang makmur dan berpengaruh di zamannya.'),
 (6, 'Demak', 'Kerajaan Islam pertama di Pulau Jawa', 'demak_detail.png', 'Kerajaan Demak didirikan sekitar abad ke-15 dan menjadi kerajaan Islam pertama yang berdiri di Pulau Jawa. Dipimpin oleh Raden Patah, Demak berperan penting dalam penyebaran agama Islam di Jawa. Masjid Agung Demak yang dibangun oleh para Wali Songo menjadi simbol kejayaan kerajaan ini. Demak tidak hanya kuat dalam bidang keagamaan, tetapi juga dalam perdagangan dan politik, menguasai pelabuhan-pelabuhan penting di pesisir utara Jawa.'),
 (7, 'Banjar', 'Kerajaan dengan perdagangan lada dan hasil hutan yang makmur', 'banjar_detail.png', 'Kerajaan Banjar berkembang di Kalimantan Selatan sejak abad ke-16 dengan basis ekonomi yang kuat dari perdagangan lada, kayu, dan hasil hutan lainnya. Terletak di daerah aliran Sungai Barito, Banjar menjadi pusat perdagangan penting yang menghubungkan pedalaman Kalimantan dengan jalur maritim Nusantara. Kerajaan ini juga terkenal dengan sistem pemerintahan yang terorganisir dan adaptasi Islam yang kuat dalam kultur masyarakatnya.'),
@@ -118,7 +119,9 @@ CREATE TABLE `kingdom_events` (
 
 INSERT INTO `kingdom_events` (`id`, `kingdom_id`, `judul`, `isi_kiri`, `isi_kanan`, `gambar_kiri`, `gambar_kanan`) VALUES
 (3, 2, 'Sumpah Palapa (1336 M)', 'Pada tahun 1336, seorang mahapatih muda bernama Gajah Mada berdiri di hadapan para pembesar kerajaan untuk mengucapkan sumpah yang kelak mengguncang sejarah Nusantara. Sumpah itu dikenal sebagai Sumpah Palapa, sebuah tekad bahwa ia tidak akan menikmati kehidupan duniawi sebelum seluruh wilayah Nusantara berhasil dipersatukan di bawah panji Majapahit. Sumpah ini bukan hanya sekadar ungkapan semangat, tetapi menjadi cerminan ambisi besar Majapahit untuk memperluas kekuasaan dan mengokohkan dirinya sebagai kerajaan terbesar di kepulauan Asia Tenggara.', 'Gajah Mada pun membuktikan kata-katanya. Dengan strategi yang matang dan kekuatan militer yang terorganisasi, ia memimpin ekspedisi ke berbagai wilayah, mulai dari Bali, Sunda, hingga kepulauan di kawasan timur Nusantara. Sedikit demi sedikit, kerajaan-kerajaan kecil berhasil ditaklukkan dan berada di bawah pengaruh Majapahit. Keberhasilan ini kemudian menjadi fondasi kejayaan Majapahit pada masa Hayam Wuruk, sehingga Sumpah Palapa dikenang sebagai titik awal penyatuan Nusantara.', 'peristiwa1_majapahit.png', 'peristiwa2_majapahit.png'),
-(4, 3, 'Penulisan Prasasti Yupa (± Abad ke-4 M)', 'Pada masa pemerintahan Raja Mulawarman, sebuah upacara besar diadakan untuk menghormati para brahmana yang telah berjasa dalam kehidupan keagamaan kerajaan. Dalam peristiwa tersebut, Mulawarman memberikan hadiah berupa ribuan ekor sapi sebagai tanda bakti dan penghormatan. Untuk mengabadikan peristiwa penting ini, para brahmana menuliskan tujuh prasasti pada batu yang disebut Yupa. Prasasti-prasasti inilah yang menjadi bukti tertulis pertama tentang keberadaan kerajaan di wilayah Nusantara.', 'Prasasti Yupa tidak hanya mencatat kedermawanan Mulawarman, tetapi juga memberikan gambaran tentang struktur masyarakat, praktik keagamaan, dan budaya Kutai pada masa itu. Penulisan prasasti tersebut menandai berkembangnya pengaruh Hindu di Kalimantan Timur dan memperlihatkan kemajuan kehidupan politik serta spiritual kerajaan. Hingga kini, Yupa menjadi salah satu peninggalan sejarah paling penting yang menunjukkan bahwa peradaban Indonesia telah maju jauh sebelum masa kerajaan besar lainnya.', 'peristiwa1_kutai.png', 'peristiwa2_kutai.png');
+(4, 3, 'Penulisan Prasasti Yupa (± Abad ke-4 M)', 'Pada masa pemerintahan Raja Mulawarman, sebuah upacara besar diadakan untuk menghormati para brahmana yang telah berjasa dalam kehidupan keagamaan kerajaan. Dalam peristiwa tersebut, Mulawarman memberikan hadiah berupa ribuan ekor sapi sebagai tanda bakti dan penghormatan. Untuk mengabadikan peristiwa penting ini, para brahmana menuliskan tujuh prasasti pada batu yang disebut Yupa. Prasasti-prasasti inilah yang menjadi bukti tertulis pertama tentang keberadaan kerajaan di wilayah Nusantara.', 'Prasasti Yupa tidak hanya mencatat kedermawanan Mulawarman, tetapi juga memberikan gambaran tentang struktur masyarakat, praktik keagamaan, dan budaya Kutai pada masa itu. Penulisan prasasti tersebut menandai berkembangnya pengaruh Hindu di Kalimantan Timur dan memperlihatkan kemajuan kehidupan politik serta spiritual kerajaan. Hingga kini, Yupa menjadi salah satu peninggalan sejarah paling penting yang menunjukkan bahwa peradaban Indonesia telah maju jauh sebelum masa kerajaan besar lainnya.', 'peristiwa1_kutai.png', 'peristiwa2_kutai.png'),
+(5, 1, 'Serangan Kerajaan Cola (1025 M)', 'Pada abad ke-11, Sriwijaya berdiri sebagai kerajaan maritim kuat yang menguasai jalur perdagangan internasional. Namun, pada tahun 1025 M, situasi berubah drastis ketika Kerajaan Cola dari India Selatan melancarkan serangan besar ke pusat kekuasaan Sriwijaya. Armada Cola menyerbu pelabuhan dan menghancurkan fasilitas penting yang menjadi penopang aktivitas ekonomi Sriwijaya. Serangan ini membuat struktur kekuatan Sriwijaya terguncang hebat, menyebabkan kerusakan besar pada armada laut dan melemahkan kontrol politik mereka atas wilayah sekitarnya.', 'Walaupun Sriwijaya tidak langsung runtuh, peristiwa ini menjadi titik balik yang melemahkan kejayaan kerajaan tersebut. Banyak daerah taklukan mulai melepaskan diri, sementara aktivitas perdagangan internasional yang sebelumnya dikuasai Sriwijaya perlahan berpindah ke kerajaan lain. Kehilangan pengaruh maritim dan tekanan dari kekuatan asing menjadikan serangan Cola sebagai salah satu peristiwa paling menentukan dalam sejarah meredupnya Sriwijaya.', 'peristiwa1_sriwijaya.png', 'peristiwa2_sriwijaya.png'),
+(6, 4, 'Perjanjian Giyanti (1755)', 'Pada pertengahan abad ke-18, Kerajaan Mataram Islam menghadapi pergolakan politik yang berkepanjangan akibat perebutan kekuasaan di dalam istana. Konflik antara pihak keraton dan campur tangan VOC semakin memperburuk keadaan. Untuk menghentikan ketegangan dan mempertahankan kestabilan politik Jawa, Belanda memediasi pembagian wilayah kekuasaan Mataram. Pada tahun 1755, Perjanjian Giyanti pun disahkan, yang secara resmi membagi kerajaan menjadi dua: Kesunanan Surakarta dan Kasultanan Yogyakarta.', 'Peristiwa ini menjadi momentum besar yang mengubah sejarah politik Jawa. Meskipun menunjukkan melemahnya otoritas Mataram, perjanjian tersebut justru melahirkan dua pusat budaya yang penting hingga saat ini. Surakarta dan Yogyakarta menjadi penjaga tradisi Jawa, dengan keraton masing-masing yang tetap melestarikan adat, seni, dan nilai-nilai budaya. Perjanjian Giyanti tidak sekadar pembagian wilayah, tetapi juga penanda lahirnya identitas baru bagi masyarakat Jawa.', 'peristiwa1_mataram.png', 'peristiwa2_mataram.png');
 
 -- --------------------------------------------------------
 
@@ -173,7 +176,19 @@ INSERT INTO `kingdom_timelines` (`id`, `kingdom_id`, `tahun`, `isi`) VALUES
 (39, 8, '1607-1636', 'Masa Sultan Iskandar Muda, puncak kejayaan Aceh'),
 (40, 8, '1641', 'Armada Aceh menguasai Selat Malaka'),
 (41, 8, '1699', 'Masa Sultanah Safiatuddin, perempuan pertama yang memerintah'),
-(42, 8, '1873-1904', 'Perang Aceh melawan Belanda, perlawanan terlama di Nusantara');
+(42, 8, '1873-1904', 'Perang Aceh melawan Belanda, perlawanan terlama di Nusantara'),
+(43, 1, '± 600 M', 'Sriwijaya muncul sebagai kerajaan maritim di Sumatra.'),
+(44, 1, '671 M', 'I-Tsing mencatat Sriwijaya sebagai pusat belajar Buddha.'),
+(45, 1, '682 M', 'Prasasti Kedukan Bukit menandai awal kejayaan Sriwijaya.'),
+(46, 1, '± 700–900 M', 'Masa puncak Sriwijaya; menguasai perdagangan Asia Tenggara.'),
+(47, 1, '1025 M', 'Serangan Kerajaan Chola melemahkan kekuatan Sriwijaya.'),
+(48, 1, '± 1300 M', 'Sriwijaya runtuh dan wilayahnya dikuasai kerajaan lain.'),
+(49, 4, '±752', 'Berdiri di Jawa Tengah; pemerintahan Raja Sanjaya.'),
+(50, 4, '778–825', 'Dinasti Syailendra memerintah dan membangun Borobudur.'),
+(51, 4, '856', 'Dinasti Sanjaya kembali berkuasa; pembangunan Candi Prambanan.'),
+(52, 4, '929', 'Ibu kota dipindahkan ke Jawa Timur (karena bencana & politik).'),
+(53, 4, '±1016', 'Mataram dihancurkan serangan Raja Wurawari.'),
+(54, 4, 'Abad 11', 'Kerajaan berakhir, digantikan kerajaan-kerajaan Jawa Timur.');
 
 -- --------------------------------------------------------
 
@@ -193,14 +208,25 @@ CREATE TABLE `kingdom_warisan` (
 --
 
 INSERT INTO `kingdom_warisan` (`id`, `kingdom_id`, `nama`, `ikon`) VALUES
-(5, 2, 'Arsitektur', 'arsi_majapahit.png'),
-(6, 2, 'Sastra', 'sastra_majapahit.png'),
-(7, 2, 'Maritim', 'maritim_majapahit.png'),
-(8, 2, 'Seni', 'seni_majapahit.png'),
-(9, 3, 'Arkeologi', 'arkeo_kutai.png'),
-(10, 3, 'Kerajaan', 'kerajaan_kutai.png'),
-(11, 3, 'Keagamaan', 'keagamaan_kutai.png'),
-(12, 3, 'Seni', 'seni_kutai.png');
+(5, 2, 'Arsitektur', 'arsitektur.png'),
+(6, 2, 'Sastra', 'sastra.png'),
+(7, 2, 'Maritim', 'maritim.png'),
+(8, 2, 'Seni', 'seni.png'),
+(9, 3, 'Arkeologi', 'arkeologi.png'),
+(10, 3, 'Kerajaan', 'kerajaan.png'),
+(11, 3, 'Keagamaan', 'agama.png'),
+(12, 3, 'Seni', 'seni.png'),
+(13, 1, 'Maritim', 'maritim.png'),
+(14, 1, 'Keagamaan', 'agama.png'),
+(15, 1, 'Sastra', 'sastra.png'),
+(16, 1, 'Arkeologi', 'arkeologi.png'),
+(17, 4, 'Arsitektur', 'arsitektur.png'),
+(18, 4, 'Sastra', 'sastra.png'),
+(19, 4, 'Keagamaan', 'agama.png'),
+(20, 4, 'Seni', 'seni.png'),
+(21, 5, 'Prasasti', 'prasasti.png'),
+(22, 5, 'Infrastruktur', 'infrastruktur.png'),
+(23, 5, 'Sastra', 'sastra.png');
 
 -- --------------------------------------------------------
 
@@ -334,19 +360,19 @@ ALTER TABLE `kingdoms`
 -- AUTO_INCREMENT untuk tabel `kingdom_events`
 --
 ALTER TABLE `kingdom_events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `kingdom_timelines`
 --
 ALTER TABLE `kingdom_timelines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT untuk tabel `kingdom_warisan`
 --
 ALTER TABLE `kingdom_warisan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `rekomendasi`
