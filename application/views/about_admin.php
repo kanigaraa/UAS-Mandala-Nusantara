@@ -67,8 +67,8 @@
       <!-- ABOUT WEBSITE -->
       <section class="aboutWebsite">
         <div class="aboutContainer fadeUp">
-          <h2 class="fadeUp">Tentang Mandala Nusantara</h2>
-          <div class="aboutContent fadeUp">
+          <h2>Tentang Mandala Nusantara</h2>
+          <div class="aboutContent">
             <p>
               <strong>Mandala Nusantara</strong> adalah platform edukasi sejarah yang 
               didedikasikan untuk menelusuri dan melestarikan warisan kerajaan-kerajaan 
@@ -95,8 +95,8 @@
       <!-- TEAM -->
       <section class="teamSection">
         <div class="teamContainer fadeUp">
-          <h2 class="fadeUp">Tim Pengembang</h2>
-          <p class="teamSubtitle fadeUp">
+          <h2>Tim Pengembang</h2>
+          <p class="teamSubtitle">
             Kenali orang-orang hebat di balik Mandala Nusantara
           </p>
         </div>

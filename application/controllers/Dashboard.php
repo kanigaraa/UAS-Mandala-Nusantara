@@ -9,20 +9,16 @@ class Dashboard extends CI_Controller {
             redirect('admin');
         }
         
-        // 1. Load KEDUA Model di sini
         $this->load->model('Kerajaan_model');
-        $this->load->model('Rekomendasi_model'); // <--- Tambahkan baris ini!
+        $this->load->model('Rekomendasi_model');
     }
 
     public function index() {
         $data['title'] = 'Dashboard Admin - Mandala';
         
-        // 2. Ambil semua data dan masukkan ke variabel $data
         $data['kerajaan'] = $this->Kerajaan_model->getAll(); 
-        $data['rekomendasi'] = $this->Rekomendasi_model->getAll(); // <--- Sekarang ini aman
+        $data['rekomendasi'] = $this->Rekomendasi_model->getAll();
 
-        // 3. Load view CUKUP SEKALI SAJA di akhir
-        // Jangan load view sepotong-sepotong, nanti tampilannya dobel atau error
         $this->load->view('admin/dashboard', $data);
     }
     
