@@ -39,12 +39,15 @@
 </head>
 <body>
 
-<div class="container-fluid" style="padding: 30px;">
+    <div class="container-fluid" style="padding: 30px;">
     
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 style="color: #4a3b2b; font-weight: bold;">Dashboard Admin</h2>
-        <a href="<?= site_url('admin/logout') ?>" class="btn btn-danger">Logout</a>
-    </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 style="color: #4a3b2b; font-weight: bold;">Dashboard Admin</h2>
+            <div>
+                <a href="<?= site_url('landing_admin') ?>" class="btn btn-outline-secondary mr-2">← Kembali ke Landing</a>
+                <a href="<?= site_url('admin/logout') ?>" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
 
     <?php if ($this->session->flashdata('success')): ?>
         <div class="alert alert-success"><?= $this->session->flashdata('success'); ?></div>

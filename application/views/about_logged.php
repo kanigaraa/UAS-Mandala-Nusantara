@@ -33,6 +33,7 @@
         <ul>
           <li><a href="<?= site_url('landing_logged') ?>">Beranda</a></li>
           <li><a href="<?= site_url('landing_logged') ?>#jelajah">Jelajah Kerajaan</a></li>
+          <li><a href="<?= site_url('quiz') ?>">Quiz</a></li>
           <li><a href="<?= site_url('about_logged') ?>" class="active">Tentang Kami</a></li>
         </ul>
       </nav>
