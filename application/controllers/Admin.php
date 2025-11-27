@@ -60,6 +60,7 @@ class Admin extends CI_Controller {
             $upload_data = $this->upload->data();
             $file_name = $upload_data['file_name'];
             $data = [
+                'kingdom_id'    => $this->input->post('kingdom_id') ?: null,
                 'nama'          => $this->input->post('nama'),
                 'lokasi'        => $this->input->post('lokasi'),
                 'icon'          => $file_name,
@@ -90,6 +91,7 @@ class Admin extends CI_Controller {
 
         $id = $this->input->post('id');
         $data = [
+            'kingdom_id' => $this->input->post('kingdom_id') ?: null,
             'nama'      => $this->input->post('nama'),
             'lokasi'    => $this->input->post('lokasi'),
             'kategori'  => $this->input->post('kategori'), 
@@ -166,6 +168,7 @@ class Admin extends CI_Controller {
             $upload_data = $this->upload->data();
             $file_name = $upload_data['file_name'];
             $data = [
+                'id_kerajaan'   => $this->input->post('id_kerajaan'),
                 'nama'          => $this->input->post('nama'),
                 'kategori'      => $this->input->post('kategori'),
                 'lokasi'        => $this->input->post('lokasi'),
