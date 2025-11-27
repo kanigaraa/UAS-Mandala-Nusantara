@@ -3,6 +3,7 @@
 <head>
     <title>Kelola Detail - <?= $k->nama ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>">
     <style>
         body { background-color: #fdfaf5; padding: 20px; }
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }

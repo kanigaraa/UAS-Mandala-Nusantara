@@ -14,6 +14,9 @@
     <!-- LOADER -->
     <div id="page-loader"><div class="spinner"></div></div>
 
+    <div class="form-container">
+        <h2>Edit Data Rekomendasi Kerajaan</h2>
+
         <?php if($this->session->flashdata('error')): ?>
             <div class="alert-error">
                 ⚠️ <?= $this->session->flashdata('error'); ?>
@@ -22,21 +25,21 @@
 
         <?= form_open_multipart('admin/update_rekomendasi'); ?>
         
-            <input type="hidden" name="id" value="<?= $rekomendasi['id_kerajaan']; ?>">
-        
+            <input type="hidden" name="id" value="<?= $rekomendasi->id ?>">
+
             <div class="form-group">
                 <label>Nama Kerajaan</label>
-                <input type="text" name="nama" required placeholder="Contoh: Kerajaan Majapahit">
+                <input type="text" name="nama" value="<?= $rekomendasi->nama; ?>" required>
             </div>
 
             <div class="form-group">
                 <label>Kategori</label>
-                <input type="text" name="kategori" required placeholder="Contoh: Hindu-Buddha">
+                <input type="text" name="kategori" value="<?= $rekomendasi->kategori; ?>" required>
             </div>
 
             <div class="form-group">
                 <label>Lokasi (Provinsi)</label>
-                <input type="text" name="lokasi" required placeholder="Contoh: Jawa Timur">
+                <input type="text" name="lokasi" value="<?= $rekomendasi->lokasi; ?>" required>
             </div>
 
             <div class="form-group">
@@ -44,14 +47,14 @@
                 <input type="file" name="gambar" accept=".png, .jpg, .jpeg">
                 <small>Biarkan kosong jika tidak ingin mengubah gambar.</small>
                 
-                <?php if(!empty($rekomendasi['gambar'])): ?>
-                    <img src="<?= base_url('assets/rekomendasi/'.$rekomendasi['gambar']) ?>" class="img-preview" alt="Preview">
+                <?php if(!empty($rekomendasi->gambar)): ?>
+                    <img src="<?= base_url('assets/rekomendasi/'.$rekomendasi->gambar) ?>" class="img-preview" alt="Preview">
                 <?php endif; ?>
             </div>
 
             <div class="form-group">
                 <label>Deskripsi Singkat</label>
-                <textarea name="deskripsi" rows="5" required placeholder="Tuliskan sejarah singkat kerajaan ini..."></textarea>
+                <textarea name="deskripsi" rows="5" required><?= $rekomendasi->deskripsi; ?></textarea>
             </div>
 
             <button type="submit" class="btn-submit">Update Data</button>

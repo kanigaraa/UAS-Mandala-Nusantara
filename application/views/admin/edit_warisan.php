@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head><title>Edit Warisan</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>">
+</head>
 <body class="p-5" style="background-color: #fdfaf5;">
     <div class="card p-4 shadow-sm" style="max-width: 600px; margin: auto;">
         <h3>Edit Warisan</h3>
