@@ -28,6 +28,12 @@
             <input type="hidden" name="id" value="<?= $rekomendasi->id ?>">
 
             <div class="form-group">
+                <label>ID Kerajaan (Primary Key)</label>
+                <input type="number" name="id_kerajaan" value="<?= $rekomendasi->id_kerajaan ?>" readonly style="background-color: #f0f0f0; cursor: not-allowed;">
+                <small>*ID tidak dapat diubah setelah data dibuat.</small>
+            </div>
+
+            <div class="form-group">
                 <label>Nama Kerajaan</label>
                 <input type="text" name="nama" value="<?= $rekomendasi->nama; ?>" required>
             </div>

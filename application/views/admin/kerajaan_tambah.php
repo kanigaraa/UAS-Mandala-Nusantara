@@ -26,6 +26,12 @@
         <?= form_open_multipart('admin/simpan_kerajaan'); ?>
         
             <div class="form-group">
+                <label>Kingdom ID (Relasi ke Tabel Kingdoms)</label>
+                <input type="number" name="kingdom_id" placeholder="Contoh: 1, 2, 3... (opsional)">
+                <small>*Isi dengan ID dari tabel kingdoms jika ada relasi. Kosongkan jika tidak ada.</small>
+            </div>
+
+            <div class="form-group">
                 <label>Nama Kerajaan</label>
                 <input type="text" name="nama" required placeholder="Contoh: Kerajaan Majapahit">
             </div>

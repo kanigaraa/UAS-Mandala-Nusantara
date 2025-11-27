@@ -1,0 +1,294 @@
+================================================================================
+                    PROSES BISNIS PROJECT MANDALA NUSANTARA
+================================================================================
+
+1. GAMBARAN UMUM SISTEM
+================================================================================
+
+Project ini adalah platform edukasi sejarah kerajaan-kerajaan Nusantara yang 
+menyediakan informasi lengkap tentang kerajaan-kerajaan bersejarah di Indonesia. 
+
+Sistem ini memiliki 3 tipe pengguna:
+- Pengunjung Umum (belum login)
+- User Terdaftar (sudah login)
+- Admin (pengelola konten)
+
+
+2. ALUR PROSES BISNIS UTAMA
+================================================================================
+
+A. PROSES REGISTRASI & LOGIN USER
+--------------------------------------------------------------------------------
+
+REGISTRASI USER:
+1. User mengakses halaman registrasi (/regist)
+2. User mengisi email dan password dengan validasi:
+   - Password minimal 8 karakter
+   - Harus ada minimal 1 huruf kapital
+   - Harus ada minimal 1 angka
+   - Password dan konfirmasi password harus sama
+3. Sistem mengecek apakah email sudah terdaftar
+4. Jika valid, password di-hash menggunakan password_hash() dan disimpan 
+   ke tabel 'users'
+5. User diarahkan ke halaman login
+
+LOGIN USER:
+1. User memasukkan email dan password
+2. Sistem memverifikasi kredensial melalui User_model->check_login()
+3. Jika berhasil, session dibuat dengan data: id, email, logged_in
+4. User diarahkan ke landing_logged (halaman utama untuk user yang sudah login)
+
+LOGIN ADMIN:
+1. Admin login melalui halaman admin (/admin)
+2. Kredensial diverifikasi dari tabel 'admin' (password plain text)
+3. Jika berhasil, session admin dibuat
+4. Admin diarahkan ke dashboard admin
+
+
+B. PROSES BROWSING KONTEN KERAJAAN
+--------------------------------------------------------------------------------
+
+LANDING PAGE (Pengunjung Umum):
+1. Pengunjung mengakses halaman utama (/landing)
+2. Melihat rekomendasi kerajaan dari tabel 'rekomendasi' (4 kerajaan utama)
+3. Dapat mengakses halaman About (/about)
+4. Untuk melihat detail, harus login terlebih dahulu
+
+LANDING PAGE (User Logged In):
+1. User yang sudah login mengakses landing_logged
+2. Dapat melihat semua kerajaan yang tersedia
+3. Dapat mengakses halaman detail kerajaan
+
+HALAMAN KERAJAAN:
+1. User mengakses /kerajaan untuk melihat daftar semua kerajaan
+2. Data diambil dari tabel 'rekomendasi' dan 'kingdoms'
+3. Setiap kerajaan menampilkan: nama, kategori, lokasi, gambar, dan 
+   deskripsi singkat
+
+
+C. PROSES MELIHAT DETAIL KERAJAAN
+--------------------------------------------------------------------------------
+
+Terdapat 2 jenis halaman detail:
+
+1. DETAIL REKOMENDASI (/kerajaan/detail_rekomendasi/{id}):
+   - Menampilkan informasi lengkap dari tabel 'kingdoms'
+   - Menampilkan Timeline (dari 'kingdom_timelines')
+   - Menampilkan Warisan Budaya (dari 'kingdom_warisan')
+   - Menampilkan Peristiwa Penting (dari 'kingdom_events')
+
+2. DETAIL KERAJAAN (/kerajaan/detail/{id}):
+   - Mirip dengan detail rekomendasi
+   - Menampilkan data kerajaan dari tabel 'kerajaan' yang berelasi 
+     dengan 'kingdoms'
+
+STRUKTUR DATA DETAIL:
+- Hero Section: Nama, subjudul, gambar utama, deskripsi lengkap
+- Timeline: Kronologi sejarah kerajaan (tahun + peristiwa)
+- Warisan Budaya: Ikon-ikon warisan (Arsitektur, Sastra, Maritim, Seni, dll)
+- Peristiwa Penting: Narasi detail dengan gambar kiri-kanan
+
+
+D. PROSES PENGELOLAAN KONTEN OLEH ADMIN
+--------------------------------------------------------------------------------
+
+Admin memiliki akses penuh untuk mengelola semua konten melalui dashboard admin.
+
+1. KELOLA KERAJAAN (Tabel 'kerajaan'):
+   - Tambah: Admin mengisi form (nama, kategori, lokasi, deskripsi, icon)
+   - Edit: Admin memilih kerajaan, mengubah data, upload icon baru (opsional)
+   - Hapus: Admin menghapus kerajaan beserta icon-nya
+
+2. KELOLA REKOMENDASI (Tabel 'rekomendasi'):
+   - Tambah: Admin menambah kerajaan yang ditampilkan di landing page
+   - Edit: Mengubah data rekomendasi
+   - Hapus: Menghapus dari daftar rekomendasi
+
+3. KELOLA DETAIL KERAJAAN (Tabel 'kingdoms'):
+   Admin dapat mengelola detail lengkap setiap kerajaan:
+
+   A. UPDATE INFO UTAMA:
+      - Mengubah nama, subjudul, deskripsi
+      - Upload gambar hero baru
+
+   B. KELOLA TIMELINE:
+      - Tambah: Menambah tahun + peristiwa baru
+      - Edit: Mengubah data timeline yang sudah ada
+      - Hapus: Menghapus entry timeline
+
+   C. KELOLA WARISAN BUDAYA:
+      - Tambah: Menambah warisan dengan nama + upload ikon
+      - Edit: Mengubah nama/ikon warisan
+      - Hapus: Menghapus warisan (via cascade delete)
+
+   D. KELOLA PERISTIWA PENTING:
+      - Tambah: Menambah peristiwa dengan:
+        * Judul peristiwa
+        * Isi narasi kiri
+        * Isi narasi kanan
+        * Upload gambar kiri
+        * Upload gambar kanan
+      - Edit: Mengubah semua data peristiwa
+      - Hapus: Menghapus peristiwa (via cascade delete)
+
+
+3. RELASI DATABASE & BUSINESS LOGIC
+================================================================================
+
+STRUKTUR RELASI:
+
+kingdoms (master data kerajaan)
+    |
+    +-- kingdom_timelines (timeline sejarah) [1:N]
+    +-- kingdom_warisan (warisan budaya) [1:N]
+    +-- kingdom_events (peristiwa penting) [1:N]
+    +-- kerajaan (data kerajaan untuk listing) [1:N]
+
+rekomendasi (kerajaan yang ditampilkan di landing page)
+
+users (user terdaftar)
+
+admin (admin pengelola)
+
+
+FOREIGN KEY CASCADE:
+- Jika 'kingdoms' dihapus, semua data terkait (timelines, warisan, events) 
+  ikut terhapus
+- Jika 'kingdoms' dihapus, kerajaan.kingdom_id menjadi NULL
+
+
+4. FITUR-FITUR UTAMA
+================================================================================
+
+UNTUK PENGUNJUNG:
+- Melihat landing page dengan 4 rekomendasi kerajaan
+- Membaca halaman About
+- Registrasi akun baru
+
+UNTUK USER TERDAFTAR:
+- Login ke sistem
+- Melihat semua kerajaan yang tersedia
+- Membaca detail lengkap setiap kerajaan (timeline, warisan, peristiwa)
+- Akses halaman About versi logged in
+
+UNTUK ADMIN:
+- Login ke dashboard admin
+- CRUD kerajaan (tabel 'kerajaan')
+- CRUD rekomendasi (tabel 'rekomendasi')
+- CRUD detail kerajaan lengkap:
+  * Update info utama
+  * Kelola timeline
+  * Kelola warisan budaya
+  * Kelola peristiwa penting
+- Upload dan manajemen file gambar/ikon
+
+
+5. TEKNOLOGI YANG DIGUNAKAN
+================================================================================
+
+- Framework: CodeIgniter 3
+- Database: MySQL/MariaDB
+- Authentication: Session-based dengan password hashing (bcrypt)
+- File Upload: Gambar untuk icon kerajaan, hero images, dan gambar peristiwa
+- Frontend: PHP Views dengan CSS terpisah per halaman
+
+
+6. STRUKTUR TABEL DATABASE
+================================================================================
+
+1. TABEL 'admin'
+   - id (PK)
+   - email (UNIQUE)
+   - password
+
+2. TABEL 'users'
+   - id (PK)
+   - email (UNIQUE)
+   - password (hashed)
+
+3. TABEL 'kingdoms' (Master Data Kerajaan)
+   - id (PK)
+   - nama
+   - subjudul
+   - gambar
+   - deskripsi
+
+4. TABEL 'kerajaan' (Data Kerajaan untuk Listing)
+   - id (PK)
+   - kingdom_id (FK -> kingdoms.id)
+   - nama
+   - kategori
+   - lokasi
+   - deskripsi
+   - icon
+
+5. TABEL 'rekomendasi' (Kerajaan Rekomendasi di Landing Page)
+   - id_kerajaan (PK)
+   - nama
+   - kategori
+   - lokasi
+   - gambar
+   - deskripsi
+
+6. TABEL 'kingdom_timelines'
+   - id (PK)
+   - kingdom_id (FK -> kingdoms.id, CASCADE)
+   - tahun
+   - isi
+
+7. TABEL 'kingdom_warisan'
+   - id (PK)
+   - kingdom_id (FK -> kingdoms.id, CASCADE)
+   - nama
+   - ikon
+
+8. TABEL 'kingdom_events'
+   - id (PK)
+   - kingdom_id (FK -> kingdoms.id, CASCADE)
+   - judul
+   - isi_kiri
+   - isi_kanan
+   - gambar_kiri
+   - gambar_kanan
+
+
+7. ROUTING APLIKASI
+================================================================================
+
+PUBLIC ROUTES:
+- /                         -> Landing page (default)
+- /landing                  -> Landing page
+- /about                    -> Halaman About
+- /login                    -> Halaman Login User
+- /regist                   -> Halaman Registrasi
+- /login/authenticate       -> Proses autentikasi user
+
+USER ROUTES (Requires Login):
+- /landing_logged           -> Landing page untuk user logged in
+- /about_logged             -> About page untuk user logged in
+- /kerajaan                 -> Daftar semua kerajaan
+- /kerajaan/detail/{id}     -> Detail kerajaan
+- /kerajaan/detail_rekomendasi/{id} -> Detail kerajaan rekomendasi
+
+ADMIN ROUTES (Requires Admin Login):
+- /admin                    -> Login & Dashboard Admin
+- /landing_admin            -> Landing page untuk admin
+- /about_admin              -> About page untuk admin
+- /dashboard                -> Dashboard admin
+
+
+8. FLOW DIAGRAM SISTEM
+================================================================================
+
+PENGUNJUNG UMUM:
+Landing Page -> [Login/Register] -> User Logged In -> Browse Kerajaan -> 
+Detail Kerajaan
+
+ADMIN:
+Admin Login -> Dashboard -> [Kelola Kerajaan/Rekomendasi/Detail] -> 
+CRUD Operations -> Update Database
+
+
+================================================================================
+                            END OF DOCUMENT
+================================================================================

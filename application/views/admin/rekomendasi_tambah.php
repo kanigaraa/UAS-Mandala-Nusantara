@@ -26,6 +26,12 @@
         <?= form_open_multipart('admin/simpan_rekomendasi'); ?>
         
             <div class="form-group">
+                <label>ID Kerajaan</label>
+                <input type="number" name="id_kerajaan" required placeholder="Contoh: 1, 2, 3...">
+                <small>*ID unik untuk kerajaan rekomendasi ini (Primary Key).</small>
+            </div>
+
+            <div class="form-group">
                 <label>Nama Kerajaan</label>
                 <input type="text" name="nama" required placeholder="Contoh: Kerajaan Majapahit">
             </div>

@@ -28,6 +28,12 @@
             <input type="hidden" name="id" value="<?= $kerajaan['id']; ?>">
 
             <div class="form-group">
+                <label>Kingdom ID (Relasi ke Tabel Kingdoms)</label>
+                <input type="number" name="kingdom_id" value="<?= $kerajaan['kingdom_id']; ?>" placeholder="Contoh: 1, 2, 3... (opsional)">
+                <small>*Isi dengan ID dari tabel kingdoms jika ada relasi. Kosongkan jika tidak ada.</small>
+            </div>
+
+            <div class="form-group">
                 <label>Nama Kerajaan</label>
                 <input type="text" name="nama" value="<?= $kerajaan['nama']; ?>" required>
             </div>
