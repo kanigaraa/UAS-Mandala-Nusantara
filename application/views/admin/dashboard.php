@@ -5,11 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Mandala</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>"> 
     <style>
         body { background-color: #fdfaf5; }
         .table-header { background-color: #4a3b2b; color: white; }
         .btn-action { margin: 0 2px; }
         .section-title { color: #4a3b2b; font-weight: bold; margin-top: 30px; margin-bottom: 15px; }
+        
+        /* Category Badge Styles */
+        .category-badge {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+        
+        .kategori-hindu-buddha {
+            background: #dce6d5;
+            color: #6b8e23;
+        }
+        
+        .kategori-islam {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        
+        .kategori-pra-kolonial {
+            background: rgba(201, 102, 94, 0.2);
+            color: rgba(201, 102, 94, 1);
+        }
     </style>
 </head>
 <body>
@@ -58,7 +83,7 @@
                         <td class="align-middle font-weight-bold"><?= $r['nama'] ?></td>
                         <td class="align-middle"><?= $r['lokasi'] ?></td>
                         <td class="align-middle">
-                            <span class="badge badge-secondary"><?= $r['kategori'] ?></span>
+                            <span class="category-badge kategori-<?= strtolower(str_replace(' ', '-', $r['kategori'])) ?>"><?= $r['kategori'] ?></span>
                         </td>
                         <td class="text-center align-middle">
                             <a href="<?= site_url('admin/edit_rekomendasi/' . $r['id_kerajaan']) ?>" class="btn btn-primary btn-sm btn-action">Edit</a>
@@ -67,7 +92,7 @@
                                onclick="return confirm('Yakin ingin menghapus rekomendasi <?= $r['nama'] ?>?')">Hapus
                             </a>
                             <a href="<?= site_url('admin/kelola_detail/' . $r['id_kerajaan']) ?>" class="btn btn-info btn-sm btn-action" style="margin-right: 5px;">
-                                Detail
+                                Kelola Detail
                             </a>
                         </td>
                     </tr>
@@ -110,8 +135,6 @@
                     $no_k = 1;
                     if(!empty($kerajaan)): 
                         foreach($kerajaan as $k): 
-                        // Catatan: Sesuaikan apakah Kerajaan pakai Array ($k['nama']) atau Object ($k->nama)
-                        // Disini aku asumsikan Array biar sama kayak rekomendasi
                     ?>
                     <tr>
                         <td class="text-center align-middle"><?= $no_k++ ?></td>
@@ -121,7 +144,7 @@
                         <td class="align-middle font-weight-bold"><?= $k['nama'] ?></td>
                         <td class="align-middle"><?= $k['lokasi'] ?></td>
                         <td class="align-middle">
-                            <span class="badge badge-info"><?= $k['kategori'] ?></span>
+                            <span class="category-badge kategori-<?= strtolower(str_replace(' ', '-', $k['kategori'])) ?>"><?= $k['kategori'] ?></span>
                         </td>
                         <td class="text-center align-middle">
                             <a href="<?= site_url('admin/edit_kerajaan/' . $k['id']) ?>" class="btn btn-primary btn-sm btn-action">Edit</a>

@@ -33,7 +33,6 @@ class DetailKelola_model extends CI_Model {
         return $this->db->insert('kingdom_warisan', $data);
     }
     public function deleteWarisan($id) {
-        // Ambil data dulu buat hapus gambarnya di controller
         return $this->db->delete('kingdom_warisan', ['id' => $id]);
     }
 
@@ -49,7 +48,6 @@ class DetailKelola_model extends CI_Model {
     }
 
     public function isRekomendasi($kingdom_id) {
-        // cek ke tabel rekomendasi
         $this->db->where('id_kerajaan', $kingdom_id);
         $cek = $this->db->get('rekomendasi'); 
         

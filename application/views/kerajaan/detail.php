@@ -19,7 +19,7 @@
     <!-- LOADER -->
     <div id="page-loader"><div class="spinner"></div></div>
     <div class="container">
-      <a href="<?= site_url('landing_logged') ?>" class="btn-back">
+      <a href="<?= site_url($this->session->userdata('admin_logged_in') ? 'landing_admin' : 'landing_logged') ?>" class="btn-back">
         ← Kembali ke Beranda
       </a>
 

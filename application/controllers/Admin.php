@@ -53,12 +53,10 @@ class Admin extends CI_Controller {
         $this->load->library('upload', $config);
 
         if ( ! $this->upload->do_upload('icon')) {
-            // JIKA UPLOAD GAGAL
             $error = $this->upload->display_errors();
             $this->session->set_flashdata('error', $error);
             redirect('admin/tambah_kerajaan');
         } else{
-            // JIKA UPLOAD BERHASIL
             $upload_data = $this->upload->data();
             $file_name = $upload_data['file_name'];
             $data = [
@@ -82,8 +80,6 @@ class Admin extends CI_Controller {
 
         $this->load->model('Kerajaan_model');
         $data['kerajaan'] = $this->Kerajaan_model->getById($id);
-
-        // Cek jika data ditemukan
         if (!$data['kerajaan']) redirect('dashboard');
 
         $this->load->view('admin/kerajaan_edit', $data);
@@ -93,16 +89,12 @@ class Admin extends CI_Controller {
         if (!$this->session->userdata('logged_in')) redirect('admin');
 
         $id = $this->input->post('id');
-
-        // gambar diproses terpisah
         $data = [
             'nama'      => $this->input->post('nama'),
             'lokasi'    => $this->input->post('lokasi'),
             'kategori'  => $this->input->post('kategori'), 
             'deskripsi' => $this->input->post('deskripsi')
         ];
-
-        // Cek apakah user upload gambar baru
         if (!empty($_FILES['icon']['name'])) {
             $config['upload_path']   = './assets/kerajaan/';
             $config['allowed_types'] = 'png|jpg|jpeg';
@@ -112,16 +104,13 @@ class Admin extends CI_Controller {
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('icon')) {
-                // Upload Sukses -> Update nama gambar di database
                 $upload_data = $this->upload->data();
                 $data['icon'] = $upload_data['file_name'];
             } else {
-                // Upload Gagal -> Tampilkan error dan kembalikan ke form edit
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect('admin/edit_kerajaan/' . $id);
             }
         }
-        // Jika tidak upload gambar, field 'icon' tidak diubah (tetap gambar lama)
 
         $this->load->model('Kerajaan_model');
         $this->Kerajaan_model->update($id, $data);
@@ -132,25 +121,17 @@ class Admin extends CI_Controller {
 
     // --- FITUR HAPUS KERAJAAN ---
     public function hapus_kerajaan($id = null) {
-        // Cek Login & ID
         if (!$this->session->userdata('logged_in')) redirect('admin');
         if ($id == null) redirect('dashboard');
 
         $this->load->model('Kerajaan_model');
-        
-        // Ambil data dulu untuk tahu nama file gambarnya
         $kerajaan = $this->Kerajaan_model->getById($id);
-
-        // Hapus file gambar dari folder assets (jika ada)
         if ($kerajaan && !empty($kerajaan['icon'])) {
             $path = './assets/kerajaan/' . $kerajaan['icon'];
-            // Cek apakah file benar-benar ada di folder
             if (file_exists($path)) {
                 unlink($path); // Hapus file gambar
             }
         }
-
-        // Hapus data dari database
         $this->Kerajaan_model->delete($id);
 
         $this->session->set_flashdata('success', 'Data Kerajaan berhasil dihapus!');
@@ -178,12 +159,10 @@ class Admin extends CI_Controller {
         $this->load->library('upload', $config);
 
         if ( ! $this->upload->do_upload('gambar')) {
-            // JIKA UPLOAD GAGAL
             $error = $this->upload->display_errors();
             $this->session->set_flashdata('error', $error);
             redirect('admin/tambah_rekomendasi');
         } else{
-            // JIKA UPLOAD BERHASIL
             $upload_data = $this->upload->data();
             $file_name = $upload_data['file_name'];
             $data = [
@@ -207,8 +186,6 @@ class Admin extends CI_Controller {
 
         $this->load->model('Rekomendasi_model');
         $data['rekomendasi'] = $this->Rekomendasi_model->getById($id);
-
-        // Cek jika data ditemukan
         if (!$data['rekomendasi']) redirect('dashboard');
 
         $this->load->view('admin/rekomendasi_edit', $data);
@@ -218,16 +195,12 @@ class Admin extends CI_Controller {
         if (!$this->session->userdata('logged_in')) redirect('admin');
 
         $id = $this->input->post('id');
-
-        // gambar diproses terpisah
         $data = [
             'nama'          => $this->input->post('nama'),
             'kategori'      => $this->input->post('kategori'),
             'lokasi'        => $this->input->post('lokasi'),
             'deskripsi'     => $this->input->post('deskripsi')
         ];
-
-        // Cek apakah user upload gambar baru
         if (!empty($_FILES['gambar']['name'])) {
             $config['upload_path']   = './assets/rekomendasi/';
             $config['allowed_types'] = 'png|jpg|jpeg';
@@ -237,16 +210,13 @@ class Admin extends CI_Controller {
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('gambar')) {
-                // Upload Sukses -> Update nama gambar di database
                 $upload_data = $this->upload->data();
                 $data['gambar'] = $upload_data['file_name'];
             } else {
-                // Upload Gagal -> Tampilkan error dan kembalikan ke form edit
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect('admin/edit_rekomendasi/' . $id);
             }
         }
-        // Jika tidak upload gambar, field 'gambar' tidak diubah (tetap gambar lama)
 
         $this->load->model('Rekomendasi_model');
         $this->Rekomendasi_model->update($id, $data);
@@ -263,12 +233,8 @@ class Admin extends CI_Controller {
         $this->load->model('Rekomendasi_model');
 
         $rekomendasi = $this->Rekomendasi_model->getById($id);
-
-        // Hapus file gambar dari folder assets (jika ada)
         if ($rekomendasi && !empty($rekomendasi->gambar)) {
             $path = './assets/rekomendasi/' . $rekomendasi->gambar;
-            
-            // Cek apakah file benar-benar ada di folder sebelum dihapus
             if (file_exists($path)) {
                 unlink($path);
             }
@@ -288,13 +254,9 @@ class Admin extends CI_Controller {
         $this->load->model('DetailKelola_model');
 
         $data['k'] = $this->DetailKelola_model->getKingdomById($kingdom_id);
-        
-        // Ambil semua data anak-anaknya
         $data['timelines'] = $this->DetailKelola_model->getTimeline($kingdom_id);
         $data['warisan']   = $this->DetailKelola_model->getWarisan($kingdom_id);
         $data['events']    = $this->DetailKelola_model->getEvents($kingdom_id);
-        
-        // Cek status: Apakah ini rekomendasi?
         $data['is_rekomendasi'] = $this->DetailKelola_model->isRekomendasi($kingdom_id);
         
         $data['kingdom_id'] = $kingdom_id;
@@ -310,8 +272,6 @@ class Admin extends CI_Controller {
             'subjudul'  => $this->input->post('subjudul'),
             'deskripsi' => $this->input->post('deskripsi'),
         ];
-
-        // Upload Gambar Utama (Hero Image)
         if (!empty($_FILES['gambar']['name'])) {
             $config['upload_path']   = './assets/kerajaan/';
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -349,8 +309,6 @@ class Admin extends CI_Controller {
     // --- C. KELOLA WARISAN ---
     public function tambah_warisan() {
         $kingdom_id = $this->input->post('kingdom_id');
-        
-        // Upload Ikon Warisan
         $config['upload_path']   = './assets/warisan/';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['encrypt_name']  = TRUE; 
@@ -385,14 +343,11 @@ class Admin extends CI_Controller {
 
         $gambar_kiri = '';
         $gambar_kanan = '';
-
-        // Upload Gambar Kiri
         if (!empty($_FILES['gambar_kiri']['name'])) {
             if ($this->upload->do_upload('gambar_kiri')) {
                 $gambar_kiri = $this->upload->data('file_name');
             }
         }
-        // Upload Gambar Kanan (Reset config)
         if (!empty($_FILES['gambar_kanan']['name'])) {
             $this->upload->initialize($config); 
             if ($this->upload->do_upload('gambar_kanan')) {
@@ -459,8 +414,6 @@ class Admin extends CI_Controller {
         $data = [
             'nama' => $this->input->post('nama')
         ];
-
-        // Cek Upload Ikon Baru
         if (!empty($_FILES['ikon']['name'])) {
             $config['upload_path']   = './assets/warisan/';
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -501,14 +454,11 @@ class Admin extends CI_Controller {
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['encrypt_name']  = TRUE;
         $this->load->library('upload', $config);
-
-        // Cek Gambar Kiri
         if (!empty($_FILES['gambar_kiri']['name'])) {
             if ($this->upload->do_upload('gambar_kiri')) {
                 $data['gambar_kiri'] = $this->upload->data('file_name');
             }
         }
-        // Cek Gambar Kanan
         if (!empty($_FILES['gambar_kanan']['name'])) {
             $this->upload->initialize($config);
             if ($this->upload->do_upload('gambar_kanan')) {

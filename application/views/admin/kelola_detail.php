@@ -3,6 +3,7 @@
 <head>
     <title>Kelola Detail - <?= $k->nama ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>">
     <style>
         body { background-color: #fdfaf5; padding: 20px; }
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -81,8 +82,10 @@
                         <tr>
                             <td><?= $t->tahun ?></td>
                             <td><?= $t->isi ?></td>
-                            <td><a href="<?= site_url('admin/edit_timeline/'.$t->id) ?>" class="btn btn-primary btn-sm">Edit</a></td>
-                            <td><a href="<?= site_url('admin/hapus_timeline/'.$t->id.'/'.$k->id) ?>" class="text-danger" onclick="return confirm('Hapus?')">Hapus</a></td>
+                            <td>
+                                <a href="<?= site_url('admin/edit_timeline/'.$t->id) ?>" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="<?= site_url('admin/hapus_timeline/'.$t->id.'/'.$k->id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus?')">Hapus</a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -106,8 +109,8 @@
                         <div class="border p-2 rounded">
                             <img src="<?= base_url('assets/warisan/'.$w->ikon) ?>" width="50" class="mb-2">
                             <h6><?= $w->nama ?></h6>
-                            <a href="<?= site_url('admin/edit_warisan/'.$w->id) ?>" class="btn btn-primary btn-sm ml-auto">Edit</a>
-                            <a href="<?= site_url('admin/hapus_warisan/'.$w->id.'/'.$k->id) ?>" class="text-danger small" onclick="return confirm('Hapus?')">Hapus</a>
+                            <a href="<?= site_url('admin/edit_warisan/'.$w->id) ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="<?= site_url('admin/hapus_warisan/'.$w->id.'/'.$k->id) ?>" class="btn btn-danger btn-sm ml-2" onclick="return confirm('Hapus?')">Hapus</a>
                         </div>
                     </div>
                     <?php endforeach; ?>
