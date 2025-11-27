@@ -31,6 +31,7 @@
         <ul>
           <li><a href="#home">Beranda</a></li>
           <li><a href="#jelajah">Jelajah Kerajaan</a></li>
+          <li><a href="<?= site_url('quiz') ?>">Quiz</a></li>
           <li><a href="<?= site_url('about_logged') ?>">Tentang Kami</a></li>
         </ul>
       </nav>
