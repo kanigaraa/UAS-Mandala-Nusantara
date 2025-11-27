@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label>Ganti Gambar Utama</label><br>
-                        <img src="<?= base_url('assets/kerajaan/'.$k->gambar) ?>" width="100" class="mb-2 rounded">
+                        <img src="<?= base_url('assets/detail/'.$k->gambar) ?>" width="100" class="mb-2 rounded">
                         <input type="file" name="gambar" class="form-control-file">
                     </div>
                     <button type="submit" class="btn btn-coklat">Simpan Perubahan</button>
