@@ -1,0 +1,50 @@
+/* Dashboard Button */
+.btnDashboard button {
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  width: 100px;
+  padding: 8px 16px;
+  border: none;
+  color: #fff;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Logout Button */
+.btnLogout button {
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  width: 80px;
+  padding: 8px 16px;
+  border: none;
+  color: #fff;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Nav Right Container */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Nav Menu */
+.navMenu ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.navMenu ul li a {
+  color: #3d2817;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navMenu ul li a:hover {
+  color: #c09f33;
+}
