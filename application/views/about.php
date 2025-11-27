@@ -32,6 +32,7 @@
         <ul>
           <li><a href="<?= site_url('landing') ?>">Beranda</a></li>
           <li><a href="<?= site_url('landing') ?>#jelajah">Jelajah Kerajaan</a></li>
+          <li><a href="<?= site_url('quiz') ?>">Quiz</a></li>
           <li><a href="<?= site_url('about') ?>" class="active">Tentang Kami</a></li>
         </ul>
       </nav>

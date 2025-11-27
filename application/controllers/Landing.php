@@ -11,7 +11,7 @@ class Landing extends CI_Controller {
         $data['rekomendasi'] = $this->Rekomendasi_model->getAll();
         $data['kerajaan']    = $this->Kerajaan_model->getAll();
 
-        $data['is_login'] = $this->session->userdata('logged_in') ? true : false;
+        $data['isLoggedIn'] = $this->session->userdata('logged_in') ? true : false;
 
         // Array fakta unik sejarah
         $fun_facts = [

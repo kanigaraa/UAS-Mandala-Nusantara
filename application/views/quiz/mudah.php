@@ -34,7 +34,7 @@
         </nav>
 
         <div class="btnLogout">
-            <button onclick="location.href='<?= site_url('landing') ?>'">
+            <button onclick="location.href='<?= site_url('login/logout') ?>'">
                 Logout
             </button>
         </div>

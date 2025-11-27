@@ -31,4 +31,8 @@ public function authenticate() {
         redirect('login');
     }
     }
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('landing');
+    }
 }

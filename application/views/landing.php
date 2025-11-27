@@ -50,14 +50,16 @@
           <li><a href="#home" class="active">Beranda</a></li>
           <li><a href="#jelajah">Jelajah Kerajaan</a></li>
           <li><a href="<?= site_url('quiz') ?>">Quiz</a></li>
-          <li><a href="<?= site_url('about') ?>">Tentang Kami</a></li>
+          <li><a href="<?= $isLoggedIn ? site_url('about_logged') : site_url('about') ?>">Tentang Kami</a></li>
         </ul>
       </nav>
 
       <div class="btnLogin">
-        <button onclick="location.href='<?= site_url('login') ?>'">
-          Login
-        </button>
+        <?php if ($isLoggedIn): ?>
+            <button onclick="location.href='<?= site_url('login/logout') ?>'">Logout</button>
+        <?php else: ?>
+            <button onclick="location.href='<?= site_url('login') ?>'">Login</button>
+        <?php endif; ?>
       </div>
     </header>
 

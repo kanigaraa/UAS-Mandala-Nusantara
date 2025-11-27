@@ -52,7 +52,7 @@
 
         <div class="btnLogout">
             <?php if ($isLoggedIn): ?>
-                <button onclick="location.href='<?= site_url('landing') ?>'">Logout</button>
+                <button onclick="location.href='<?= site_url('login/logout') ?>'">Logout</button>
             <?php else: ?>
                 <button onclick="location.href='<?= site_url('login') ?>'">Login</button>
             <?php endif; ?>
