@@ -135,8 +135,6 @@
                     $no_k = 1;
                     if(!empty($kerajaan)): 
                         foreach($kerajaan as $k): 
-                        // Catatan: Sesuaikan apakah Kerajaan pakai Array ($k['nama']) atau Object ($k->nama)
-                        // Disini aku asumsikan Array biar sama kayak rekomendasi
                     ?>
                     <tr>
                         <td class="text-center align-middle"><?= $no_k++ ?></td>
