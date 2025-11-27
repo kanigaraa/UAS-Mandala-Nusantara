@@ -69,6 +69,19 @@
                 <button class="restartBtn" onclick="location.reload()">Ulangi Quiz</button>
                 <a href="<?= site_url('quiz') ?>" class="homeBtn">Pilih Tingkat Lain</a>
             </div>
+
+            <form action="<?= site_url('leaderboard/simpan'); ?>" method="POST">
+                <input type="hidden" name="skor" id="inputSkor" value="100"> 
+                <input type="hidden" name="kategori" value="Mudah">
+                
+                <button type="submit" style="padding: 10px 20px; background: green; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Simpan Skor & Lihat Peringkat
+                </button>
+            </form>
+
+            <script>
+                document.getElementById('inputSkor').value = totalScore; 
+            </script>
         </div>
     </div>
 

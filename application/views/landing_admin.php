@@ -74,6 +74,19 @@
         </div>
       </section>
 
+      <!-- TAHUKAH KAMU (FUN FACT) -->
+      <section class="funFactSection">
+        <div class="funFactContainer fadeUp">
+          <div class="funFactIcon">
+            <img src="<?= base_url('assets/icon/lightbulb.svg') ?>" alt="Fun Fact Icon" />
+          </div>
+          <div class="funFactContent">
+            <h2 class="funFactTitle">Tahukah Kamu?</h2>
+            <p class="funFactText"><?= $fun_fact ?></p>
+          </div>
+        </div>
+      </section>
+
       <!-- REKOMENDASI -->
       <section class="rekomendasi" id="rekomendasi">
         <div class="rekomendasiContainer fadeUp">
