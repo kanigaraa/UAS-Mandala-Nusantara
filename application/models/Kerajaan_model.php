@@ -12,6 +12,11 @@ class Kerajaan_model extends CI_Model {
     {
         return $this->db->insert('kerajaan', $data);
     }
+    
+    public function get_insert_id()
+    {
+        return $this->db->insert_id();
+    }
 
     public function getById($id)
     {
