@@ -104,6 +104,12 @@
                 </ul>
             </div>
         </div>
+
+        <div style="margin-top: 40px;">
+            <button class="saveBtn" id="btnLeaderboard" onclick="location.href='<?= site_url('leaderboard') ?>'">
+                Lihat Leaderboard
+            </button>
+        </div>
     </div>
 
     <!-- FOOTER -->
@@ -179,6 +185,16 @@
                     }
                 });
             });
+
+            const btnLeaderboard = document.getElementById("btnLeaderboard");
+            if (btnLeaderboard) {
+                btnLeaderboard.addEventListener("click", function(e) {
+                    if (!isLoggedIn) {
+                        e.preventDefault();
+                        if (popup) popup.style.display = "flex";
+                    }
+                });
+            }
 
             if (closePopup) {
                 closePopup.addEventListener("click", () => {

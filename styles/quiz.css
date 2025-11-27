@@ -188,11 +188,9 @@ body {
 
 .difficultyCard.mudah:hover {
   border-color: #6b8e23;
-  background: linear-gradient(
-    135deg,
-    rgba(220, 230, 213, 0.3) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(220, 230, 213, 0.3) 0%,
+      rgba(255, 255, 255, 1) 100%);
 }
 
 .difficultyCard.sedang {
@@ -201,11 +199,9 @@ body {
 
 .difficultyCard.sedang:hover {
   border-color: #d97706;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 244, 230, 0.5) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 244, 230, 0.5) 0%,
+      rgba(255, 255, 255, 1) 100%);
 }
 
 .difficultyCard.sulit {
@@ -214,11 +210,9 @@ body {
 
 .difficultyCard.sulit:hover {
   border-color: #dc2626;
-  background: linear-gradient(
-    135deg,
-    rgba(254, 226, 226, 0.5) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(254, 226, 226, 0.5) 0%,
+      rgba(255, 255, 255, 1) 100%);
 }
 
 .difficultyCard h3 {
@@ -338,6 +332,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -394,11 +389,9 @@ body {
 }
 
 .optionBtn {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(245, 230, 211, 0.5) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(245, 230, 211, 0.5) 100%);
   border: 2px solid rgba(212, 175, 55, 0.3);
   border-radius: 12px;
   padding: 20px 24px;
@@ -412,11 +405,9 @@ body {
 }
 
 .optionBtn:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.15) 0%,
-    rgba(139, 111, 71, 0.15) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.15) 0%,
+      rgba(139, 111, 71, 0.15) 100%);
   border-color: #d4af37;
   transform: translateX(8px);
 }
@@ -559,6 +550,26 @@ body {
 .homeBtn:hover {
   background: rgba(212, 175, 55, 0.1);
   transform: scale(1.05);
+}
+
+.saveBtn {
+  background: linear-gradient(90deg, #d4af37, #8b6f47);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 16px 48px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Poppins, sans-serif;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.saveBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }
 
 /* FOOTER */
@@ -721,7 +732,8 @@ hr {
   }
 
   .restartBtn,
-  .homeBtn {
+  .homeBtn,
+  .saveBtn {
     width: 100%;
     margin: 8px 0;
   }
@@ -795,6 +807,7 @@ hr {
     transform: scale(0.8);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;

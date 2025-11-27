@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Sedang - Mandala Nusantara</title>
     
-    <link rel="stylesheet" href="<?= base_url('styles/quiz.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('styles/quiz.css?v=' . time()) ?>">
     <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@
                 <input type="hidden" name="skor" id="inputSkor" value="100"> 
                 <input type="hidden" name="kategori" value="Mudah">
                 
-                <button type="submit" style="padding: 10px 20px; background: green; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                <button type="submit" class="saveBtn">
                     Simpan Skor & Lihat Peringkat
                 </button>
             </form>

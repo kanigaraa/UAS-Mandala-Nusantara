@@ -3,83 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papan Peringkat - Mandala</title>
-    <link rel="stylesheet" href="<?= base_url('styles/landing.css'); ?>">
+    <title>Papan Peringkat - Mandala Nusantara</title>
+    
+    <link rel="stylesheet" href="<?= base_url('styles/leaderboard.css?v=' . time()) ?>">
+    <link rel="stylesheet" href="<?= base_url('styles/loader.css') ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= base_url('assets/icon_mandala.png') ?>">
-    <style>
-        .leaderboard-container {
-            max_width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box_shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #8B4513; /* Warna tema kayu/sejarah */
-            color: white;
-        }
-        tr:nth-child(1) td { font-weight: bold; color: #d4af37; } /* Emas untuk Juara 1 */
-        tr:nth-child(2) td { font-weight: bold; color: #c0c0c0; } /* Perak */
-        tr:nth-child(3) td { font-weight: bold; color: #cd7f32; } /* Perunggu */
-        .btn-back {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #8B4513;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
+    <!-- LOADER -->
+    <div id="page-loader"><div class="spinner"></div></div>
 
-    <div class="leaderboard-container">
-        <h1>🏆 Papan Peringkat Mandala 🏆</h1>
-        <p>Pejuang sejarah terbaik minggu ini</p>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="<?= site_url('landing_logged') ?>">
+                <img src="<?= base_url('assets/logo_mandala1.png') ?>" alt="logo">
+            </a>
+        </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nama Pejuang</th>
-                    <th>Kategori</th>
-                    <th>Skor</th>
-                    <th>Tanggal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if(!empty($top_skor)): ?>
-                    <?php $no = 1; foreach($top_skor as $row): ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $format_nama($row['email']); ?></td>
-                        <td><?= $row['kategori']; ?></td>
-                        <td><?= $row['skor']; ?></td>
-                        <td><?= date('d M Y', strtotime($row['tanggal'])); ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="5">Belum ada data skor. Jadilah yang pertama!</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+        <nav>
+            <ul>
+                <li><a href="<?= site_url('landing_logged') ?>">Beranda</a></li>
+                <li><a href="<?= site_url('landing_logged#jelajah') ?>">Jelajah Kerajaan</a></li>
+                <li><a href="<?= site_url('quiz') ?>">Quiz</a></li>
+                <li><a href="<?= site_url('about_logged') ?>">Tentang Kami</a></li>
+            </ul>
+        </nav>
 
-        <a href="<?= base_url('landing_logged'); ?>" class="btn-back">Kembali ke Beranda</a>
+        <div class="btnLogout">
+            <button onclick="location.href='<?= site_url('landing') ?>'">
+                Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="leaderboardHero">
+        <img src="<?= base_url('assets/hero_image.png') ?>" alt="Hero Image">
+        <div class="heroContent fadeUp">
+            <h1>Papan Peringkat</h1>
+            <p>Para pejuang sejarah terbaik yang telah membuktikan pengetahuannya tentang Nusantara</p>
+        </div>
+    </section>
+
+    <!-- LEADERBOARD CONTAINER -->
+    <div class="leaderboardContainer fadeUp">
+        <div class="leaderboardCard">
+            <div class="tableWrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Peringkat</th>
+                            <th>Nama Pejuang</th>
+                            <th>Kategori</th>
+                            <th>Skor</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(!empty($top_skor)): ?>
+                            <?php $no = 1; foreach($top_skor as $row): ?>
+                            <tr class="<?= $no <= 3 ? 'rank-' . $no : '' ?>">
+                                <td data-label="Peringkat">
+                                    <?php if($no == 1): ?>
+                                        <span class="rank-icon">🥇</span>
+                                    <?php elseif($no == 2): ?>
+                                        <span class="rank-icon">🥈</span>
+                                    <?php elseif($no == 3): ?>
+                                        <span class="rank-icon">🥉</span>
+                                    <?php else: ?>
+                                        #
+                                    <?php endif; ?>
+                                    <?= $no++; ?>
+                                </td>
+                                <td data-label="Nama Pejuang"><?= $format_nama($row['email']); ?></td>
+                                <td data-label="Kategori"><?= $row['kategori']; ?></td>
+                                <td data-label="Skor"><?= $row['skor']; ?></td>
+                                <td data-label="Tanggal"><?= date('d M Y', strtotime($row['tanggal'])); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 40px;">
+                                    Belum ada data skor. Jadilah yang pertama menaklukkan tantangan ini!
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="<?= site_url('quiz'); ?>" class="btn-back">← Kembali ke Quiz</a>
+            </div>
+        </div>
     </div>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footerContainer">
+            <div class="footerCol">
+                <img src="<?= base_url('assets/logo_footer.png') ?>" class="footerLogo">
+                <p class="footerDesc">
+                    Platform edukasi sejarah kerajaan Indonesia yang menyenangkan dan informatif untuk semua kalangan.
+                </p>
+            </div>
+            <div class="footerCol">
+                <h3 class="footerTitle">Jelajahi</h3>
+                <ul class="footerList">
+                    <li>Semua Kerajaan</li>
+                    <li>Timeline Era</li>
+                    <li>Tokoh Bersejarah</li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <h3 class="footerTitle">Informasi</h3>
+                <ul class="footerList">
+                    <li><a href="<?= site_url('about_logged') ?>">Tentang Kami</a></li>
+                    <li>Referensi & Sumber</li>
+                    <li>Kontak</li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <h3 class="footerTitle">Ikuti Kami</h3>
+                <div class="footerSocial">
+                    <div class="iconCircle">
+                        <a href="https://www.instagram.com/">
+                            <img src="<?= base_url('assets/icon/instagram.png') ?>" class="socialIcon">
+                        </a>
+                    </div>
+                </div>
+                <p class="footerNote">
+                    Dapatkan update konten sejarah terbaru dan menarik.
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="footerBottom">© 2025 Mandala. Semua Hak Dilindungi.</div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeItems = document.querySelectorAll(".fadeUp");
+            fadeItems.forEach((item, index) => {
+                item.style.setProperty("--delay", `${index * 0.1}s`);
+                setTimeout(() => { item.classList.add("show"); }, 100);
+            });
+        });
+    </script>
+    <script src="<?= base_url('assets/js/loader.js') ?>"></script>
 </body>
 </html>
