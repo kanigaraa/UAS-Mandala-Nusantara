@@ -48,7 +48,7 @@ class Admin extends CI_Controller {
         $config['upload_path']      = './assets/kerajaan/'; 
         $config['allowed_types']    = 'png|jpg|jpeg';      
         $config['max_size']         = 5048;               
-        $config['encrypt_name']     = FALSE;
+        $config['encrypt_name']     = TRUE;
 
         $this->load->library('upload', $config);
 
@@ -107,7 +107,7 @@ class Admin extends CI_Controller {
             $config['upload_path']   = './assets/kerajaan/';
             $config['allowed_types'] = 'png|jpg|jpeg';
             $config['max_size']      = 5048;
-            $config['encrypt_name']  = FALSE;
+            $config['encrypt_name']  = TRUE;
 
             $this->load->library('upload', $config);
 
@@ -173,7 +173,7 @@ class Admin extends CI_Controller {
         $config['upload_path']      = './assets/rekomendasi/'; 
         $config['allowed_types']    = 'png|jpg|jpeg';      
         $config['max_size']         = 5048;               
-        $config['encrypt_name']     = FALSE;
+        $config['encrypt_name']     = TRUE;
 
         $this->load->library('upload', $config);
 
@@ -232,7 +232,7 @@ class Admin extends CI_Controller {
             $config['upload_path']   = './assets/rekomendasi/';
             $config['allowed_types'] = 'png|jpg|jpeg';
             $config['max_size']      = 5048;
-            $config['encrypt_name']  = FALSE;
+            $config['encrypt_name']  = TRUE;
 
             $this->load->library('upload', $config);
 
@@ -278,5 +278,246 @@ class Admin extends CI_Controller {
 
         $this->session->set_flashdata('success', 'Data Rekomendasi berhasil dihapus!');
         redirect('dashboard');
+    }
+
+
+    // === FITUR KELOLA DETAIL ===
+    public function kelola_detail($kingdom_id = null) {
+        if (!$this->session->userdata('logged_in')) redirect('admin');
+        
+        $this->load->model('DetailKelola_model');
+
+        $data['k'] = $this->DetailKelola_model->getKingdomById($kingdom_id);
+        
+        // Ambil semua data anak-anaknya
+        $data['timelines'] = $this->DetailKelola_model->getTimeline($kingdom_id);
+        $data['warisan']   = $this->DetailKelola_model->getWarisan($kingdom_id);
+        $data['events']    = $this->DetailKelola_model->getEvents($kingdom_id);
+        
+        // Cek status: Apakah ini rekomendasi?
+        $data['is_rekomendasi'] = $this->DetailKelola_model->isRekomendasi($kingdom_id);
+        
+        $data['kingdom_id'] = $kingdom_id;
+
+        $this->load->view('admin/kelola_detail', $data);
+    }
+
+    // --- A. UPDATE DATA UTAMA ---
+    public function update_info_utama() {
+        $id = $this->input->post('id');
+        $data = [
+            'nama'      => $this->input->post('nama'),
+            'subjudul'  => $this->input->post('subjudul'),
+            'deskripsi' => $this->input->post('deskripsi'),
+        ];
+
+        // Upload Gambar Utama (Hero Image)
+        if (!empty($_FILES['gambar']['name'])) {
+            $config['upload_path']   = './assets/kerajaan/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('gambar')) {
+                $data['gambar'] = $this->upload->data('file_name');
+            }
+        }
+
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->updateKingdom($id, $data);
+        $this->session->set_flashdata('success', 'Info Utama berhasil diupdate!');
+        redirect('admin/kelola_detail/' . $id);
+    }
+
+    // --- B. KELOLA TIMELINE ---
+    public function tambah_timeline() {
+        $kingdom_id = $this->input->post('kingdom_id');
+        $data = [
+            'kingdom_id' => $kingdom_id,
+            'tahun'      => $this->input->post('tahun'),
+            'isi'        => $this->input->post('isi')
+        ];
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->insertTimeline($data);
+        redirect('admin/kelola_detail/' . $kingdom_id);
+    }
+
+    public function hapus_timeline($id, $kingdom_id) {
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->deleteTimeline($id);
+        redirect('admin/kelola_detail/' . $kingdom_id);
+    }
+
+    // --- C. KELOLA WARISAN ---
+    public function tambah_warisan() {
+        $kingdom_id = $this->input->post('kingdom_id');
+        
+        // Upload Ikon Warisan
+        $config['upload_path']   = './assets/warisan/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['encrypt_name']  = TRUE; 
+        $this->load->library('upload', $config);
+
+        $ikon = '';
+        if ($this->upload->do_upload('ikon')) {
+            $ikon = $this->upload->data('file_name');
+        }
+
+        $data = [
+            'kingdom_id' => $kingdom_id,
+            'nama'       => $this->input->post('nama'),
+            'ikon'       => $ikon
+        ];
+
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->insertWarisan($data);
+        $this->session->set_flashdata('success', 'Warisan berhasil ditambahkan!');
+        redirect('admin/kelola_detail/' . $kingdom_id);
+    }
+
+    // --- D. KELOLA EVENTS/PERISTIWA ---
+    public function tambah_event() {
+        $kingdom_id = $this->input->post('kingdom_id');
+        
+        // Config Upload untuk 2 Gambar (Kiri & Kanan)
+        $config['upload_path']   = './assets/peristiwa/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['encrypt_name']  = TRUE;
+        $this->load->library('upload', $config);
+
+        $gambar_kiri = '';
+        $gambar_kanan = '';
+
+        // Upload Gambar Kiri
+        if (!empty($_FILES['gambar_kiri']['name'])) {
+            if ($this->upload->do_upload('gambar_kiri')) {
+                $gambar_kiri = $this->upload->data('file_name');
+            }
+        }
+        // Upload Gambar Kanan (Reset config)
+        if (!empty($_FILES['gambar_kanan']['name'])) {
+            $this->upload->initialize($config); 
+            if ($this->upload->do_upload('gambar_kanan')) {
+                $gambar_kanan = $this->upload->data('file_name');
+            }
+        }
+
+        $data = [
+            'kingdom_id'   => $kingdom_id,
+            'judul'        => $this->input->post('judul'),
+            'isi_kiri'     => $this->input->post('isi_kiri'),
+            'isi_kanan'    => $this->input->post('isi_kanan'),
+            'gambar_kiri'  => $gambar_kiri,
+            'gambar_kanan' => $gambar_kanan
+        ];
+
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->insertEvent($data);
+        $this->session->set_flashdata('success', 'Detail Peristiwa berhasil ditambahkan!');
+        redirect('admin/kelola_detail/' . $kingdom_id);
+    }
+
+
+    // FITUR EDIT TIMELINE
+    public function edit_timeline($id) {
+        if (!$this->session->userdata('logged_in')) redirect('admin');
+        $this->load->model('DetailKelola_model');
+        
+        $data['t'] = $this->DetailKelola_model->getTimelineById($id);
+        if(!$data['t']) redirect('dashboard');
+
+        $this->load->view('admin/edit_timeline', $data);
+    }
+
+    public function update_timeline() {
+        $id = $this->input->post('id');
+        $kingdom_id = $this->input->post('kingdom_id');
+
+        $data = [
+            'tahun' => $this->input->post('tahun'),
+            'isi'   => $this->input->post('isi')
+        ];
+
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->updateTimeline($id, $data);
+        
+        $this->session->set_flashdata('success', 'Timeline berhasil diperbarui!');
+        redirect('admin/kelola_detail/' . $kingdom_id);
+    }
+
+    // FITUR EDIT WARISAN
+    public function edit_warisan($id) {
+        if (!$this->session->userdata('logged_in')) redirect('admin');
+        $this->load->model('DetailKelola_model');
+        
+        $data['w'] = $this->DetailKelola_model->getWarisanById($id);
+        $this->load->view('admin/edit_warisan', $data);
+    }
+
+    public function update_warisan() {
+        $id = $this->input->post('id');
+        $kingdom_id = $this->input->post('kingdom_id');
+
+        $data = [
+            'nama' => $this->input->post('nama')
+        ];
+
+        // Cek Upload Ikon Baru
+        if (!empty($_FILES['ikon']['name'])) {
+            $config['upload_path']   = './assets/warisan/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['encrypt_name']  = TRUE;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('ikon')) {
+                $data['ikon'] = $this->upload->data('file_name');
+            }
+        }
+
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->updateWarisan($id, $data);
+        redirect('admin/kelola_detail/' . $kingdom_id);
+    }
+
+    // FITUR EDIT EVENT / PERISTIWA
+    public function edit_event($id) {
+        if (!$this->session->userdata('logged_in')) redirect('admin');
+        $this->load->model('DetailKelola_model');
+        
+        $data['e'] = $this->DetailKelola_model->getEventById($id);
+        $this->load->view('admin/edit_event', $data);
+    }
+
+    public function update_event() {
+        $id = $this->input->post('id');
+        $kingdom_id = $this->input->post('kingdom_id');
+
+        $data = [
+            'judul'     => $this->input->post('judul'),
+            'isi_kiri'  => $this->input->post('isi_kiri'),
+            'isi_kanan' => $this->input->post('isi_kanan')
+        ];
+
+        // Config Upload
+        $config['upload_path']   = './assets/peristiwa/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['encrypt_name']  = TRUE;
+        $this->load->library('upload', $config);
+
+        // Cek Gambar Kiri
+        if (!empty($_FILES['gambar_kiri']['name'])) {
+            if ($this->upload->do_upload('gambar_kiri')) {
+                $data['gambar_kiri'] = $this->upload->data('file_name');
+            }
+        }
+        // Cek Gambar Kanan
+        if (!empty($_FILES['gambar_kanan']['name'])) {
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('gambar_kanan')) {
+                $data['gambar_kanan'] = $this->upload->data('file_name');
+            }
+        }
+
+        $this->load->model('DetailKelola_model');
+        $this->DetailKelola_model->updateEvent($id, $data);
+        redirect('admin/kelola_detail/' . $kingdom_id);
     }
 }
