@@ -68,8 +68,8 @@
             </div>
 
             <form action="<?= site_url('leaderboard/simpan'); ?>" method="POST">
-                <input type="hidden" name="skor" id="inputSkor" value="100"> 
-                <input type="hidden" name="kategori" value="Mudah">
+                <input type="hidden" name="skor" id="inputSkor"> 
+                <input type="hidden" name="kategori" value="Sulit">
                 
                 <button type="submit" class="saveBtn">
                     Simpan Skor & Lihat Peringkat
@@ -77,7 +77,7 @@
             </form>
 
             <script>
-                document.getElementById('inputSkor').value = totalScore; 
+                document.getElementById('inputSkor').value = percentage; 
             </script>
         </div>
     </div>
@@ -326,6 +326,9 @@
             document.getElementById('resultsMessage').textContent = message;
             document.getElementById('resultsContainer').classList.add('show');
             document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+
+            // Set nilai input skor untuk form
+            document.getElementById('inputSkor').value = percentage;
         }
     </script>
     
