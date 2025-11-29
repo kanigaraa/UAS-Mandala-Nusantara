@@ -16,7 +16,7 @@ class Leaderboard extends CI_Controller {
 
         $data['top_skor'] = $this->Skor_model->get_leaderboard();
         
-        // Helper biar nama yang muncul cuma depan email (misal: aca@gmail.com -> Acha)
+        // Helper biar nama yang muncul cuma depan email (misal: aca@gmail.com -> Aca)
         $data['format_nama'] = function($email) {
             $parts = explode('@', $email);
             return ucfirst($parts[0]);

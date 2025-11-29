@@ -121,6 +121,7 @@ body {
   width: 100%;
   height: 100vh;
   object-fit: cover;
+  display: block;
 }
 
 .heroContent {
@@ -160,7 +161,8 @@ body {
 
 /* FUN FACT WIDGET */
 .funFactSection {
-  padding: 60px 20px;
+  padding: 30px 20px 60px;
+  margin-top: -5px;
   background: linear-gradient(135deg, #f5e6d3 0%, #fff 100%);
 }
 
@@ -357,11 +359,9 @@ body {
 }
 
 .jelajahCard {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(245, 230, 211, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(245, 230, 211, 1) 100%);
   border-radius: 20px;
   padding: 24px;
   width: 290px;
@@ -381,11 +381,9 @@ body {
 .jelajahIconWrap {
   width: 48px;
   height: 48px;
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 1) 0%,
-    rgba(139, 111, 71, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(212, 175, 55, 1) 0%,
+      rgba(139, 111, 71, 1) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -602,6 +600,7 @@ hr {
 
 /* Mobile */
 @media (max-width: 768px) {
+
   /* NAVBAR MOBILE */
   .navbar {
     padding: 10px 16px;
